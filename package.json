@@ -2,11 +2,13 @@
   "name": "home-tab",
   "version": "0.0.0",
   "scripts": {
+    "co": "sui-mono commit",
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview"
   },
   "devDependencies": {
-    "vite": "^2.7.2"
+    "@s-ui/mono": "2.18.0",
+    "vite": "2.7.2"
   }
 }
