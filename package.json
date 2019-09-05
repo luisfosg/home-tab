@@ -3,7 +3,8 @@
   "version": "0.0.0",
   "scripts": {
     "co": "sui-mono commit",
-    "tail:dev": "npx tailwindcss -o ./css/output.css --minify --watch",
+    "tail:dev": "npx tailwindcss -o ./public/css/output.css --minify --watch",
+    "deploy": "surge dist --domain https://hometab.surge.sh",
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview"
