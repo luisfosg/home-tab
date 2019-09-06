@@ -1,3 +1,3 @@
-document.querySelector('#app').innerHTML = `
-  <h1>Hello Vite!</h1>
-`
+const $ = (element) => document.querySelector(element);
+
+$('#app').innerHTML = `Prueba`
