@@ -4,7 +4,8 @@
   "scripts": {
     "co": "sui-mono commit",
     "tail:dev": "npx tailwindcss -o ./assets/main.css --minify --watch",
-    "deploy": "surge dist --domain https://hometab.surge.sh",
+    "tail:prod": "npx tailwindcss -o ./assets/main.css --minify",
+    "deploy": "npm run tail:prod && npm run build && surge dist --domain https://hometab.surge.sh",
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview"
@@ -12,6 +13,7 @@
   "devDependencies": {
     "@s-ui/mono": "2.18.0",
     "tailwindcss": "3.0.7",
-    "vite": "2.7.2"
+    "vite": "2.7.2",
+    "vite-plugin-html": "2.1.1"
   }
 }
