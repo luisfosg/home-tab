@@ -2,16 +2,18 @@
   "name": "home-tab",
   "version": "0.0.0",
   "scripts": {
-    "co": "sui-mono commit",
+    "co": "npm run lint && git add . && sui-mono commit",
     "tail:dev": "npx tailwindcss -o ./assets/main.css --minify --watch",
     "tail:prod": "npx tailwindcss -o ./assets/main.css --minify",
     "deploy": "npm run tail:prod && npm run build && surge dist --domain https://hometab.surge.sh",
+    "lint": "standard --fix",
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview"
   },
   "devDependencies": {
     "@s-ui/mono": "2.18.0",
+    "standard": "16.0.4",
     "tailwindcss": "3.0.7",
     "vite": "2.7.2",
     "vite-plugin-html": "2.1.1"
