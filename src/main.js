@@ -1,3 +1,2 @@
-const $ = (element) => document.querySelector(element)
-
-$('#app').innerHTML = 'Prueba'
+export const $ = (element) => document.querySelector(element)
+export const $$ = (element) => document.querySelectorAll(element)
