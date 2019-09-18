@@ -1,6 +1,7 @@
 import { $ } from './domElements'
+import { queryBg } from './config.json'
 
-const API = 'https://api.unsplash.com/photos/random/?client_id={{api}}&orientation=landscape&&query=cold'
+const API = `https://api.unsplash.com/photos/random/?client_id={{api}}&orientation=landscape&&query=${queryBg}`
 
 const apliWallpaper = async (res) => {
   const {
