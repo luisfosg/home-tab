@@ -1,4 +1,4 @@
-import './search'
-import { getWallpaper } from './background'
+import './functions/search'
+import { getWallpaper } from './functions/background'
 
 getWallpaper()
