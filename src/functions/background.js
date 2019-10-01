@@ -1,7 +1,7 @@
 import { $ } from '@/util/domElements'
 import { saveLocalStorage, getLocalStorage } from '@/util'
 
-import { queryBg } from '@/config.json'
+import { queryBg, maxTime } from '@/config.json'
 
 const API = `https://api.unsplash.com/photos/random/?client_id={{api}}&orientation=landscape&&query=${queryBg}`
 
@@ -25,13 +25,17 @@ const apliWallpaper = async (res) => {
 
 export const getWallpaper = async () => {
   const hasWallpaper = getLocalStorage('wallpaper')
-  if (hasWallpaper) return apliWallpaper(hasWallpaper)
+  const time = getLocalStorage('time')
+
+  const pasTime = Date.now() - time
+  if (hasWallpaper && pasTime < maxTime) return apliWallpaper(hasWallpaper)
 
   try {
     const data = await window.fetch(API.replace('{{api}}', import.meta.env.VITE_UNSPLASH_KEY))
     const res = await data.json()
 
     saveLocalStorage('wallpaper', res)
+    saveLocalStorage('time', Date.now())
     apliWallpaper(res)
   } catch (error) {
     console.log(error)

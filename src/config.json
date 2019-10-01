@@ -1,4 +1,5 @@
 {
   "name": "LuisFOsG",
-  "queryBg": "cold"
+  "queryBg": "cold",
+  "maxTime": 600000
 }
