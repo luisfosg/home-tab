@@ -1,4 +1,4 @@
-import { $ } from '../util/domElements'
+import { $ } from '@/util/domElements'
 
 const form = $('#search')
 const input = $('#search-input')
