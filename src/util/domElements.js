@@ -1,6 +1,12 @@
 export const $ = (element) => document.querySelector(element)
 export const $$ = (elements) => document.querySelectorAll(elements)
 
-export function addEvent (element, evnt, funct) {
-  if (element.attachEvent) { return element.attachEvent('on' + evnt, funct) } else { return element.addEventListener(evnt, funct, false) }
+export function addEvent (elmDom, evt, callback) {
+  if (!elmDom) return
+
+  if (elmDom.attachEvent) {
+    return elmDom.attachEvent('on' + evt, callback)
+  } else {
+    return elmDom.addEventListener(evt, callback, false)
+  }
 }

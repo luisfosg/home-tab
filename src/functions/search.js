@@ -1,6 +1,5 @@
-import { $ } from '@/util/domElements'
+import { $, addEvent } from '@/util/domElements'
 
-const form = $('#search')
 const input = $('#search-input')
 
 function urlify (text) {
@@ -27,4 +26,4 @@ const searchQuery = (e) => {
   e.target.reset()
 }
 
-form.addEventListener('submit', searchQuery)
+addEvent($('#search'), 'submit', searchQuery)
