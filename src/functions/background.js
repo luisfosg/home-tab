@@ -1,9 +1,9 @@
 import { $ } from '@/util/domElements'
 import { setStorage, getStorage } from '@/util'
 
-import { queryBg, maxTime, defaultBg } from '@/config.json'
+import { APIBG, queryBg, maxTime, defaultBg } from '@/config.json'
 
-const API = `https://api.unsplash.com/photos/random/?client_id={{api}}&orientation=landscape&&query=${queryBg}`
+const API = APIBG.replace('{{query}}', queryBg)
 
 const apliWallpaper = async (res) => {
   const {
