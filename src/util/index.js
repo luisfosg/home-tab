@@ -4,5 +4,10 @@ export const setStorage = (name, value) => {
 
 export const getStorage = (name) => {
   const value = window.localStorage.getItem(name)
-  return value ? JSON.parse(value) : null
+
+  try {
+    return value ? JSON.parse(value) : null
+  } catch (error) {
+    return null
+  }
 }

@@ -1,5 +1,7 @@
 import { $, addEvent } from '@/util/domElements'
+import { getStorage, setStorage } from '@/util'
 
 addEvent($('#pinBg'), 'click', function () {
-  window.alert('Muy Pronto!')
+  const pin = getStorage('pin')
+  setStorage('pin', pin ? !pin : true)
 })
