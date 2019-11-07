@@ -7,11 +7,6 @@ const API = APIBG.replace('{{query}}', queryBg)
 
 const apliWallpaper = async (res) => {
   const {
-    /* user: {
-      links: { html: link_profile },
-      first_name,
-      location
-    }, */
     urls: { regular }
   } = res
 
@@ -25,7 +20,11 @@ const apliWallpaper = async (res) => {
 
 export const getWallpaper = async () => {
   const hasWallpaper = getStorage('wallpaper')
+  const pin = getStorage('pin')
   const time = getStorage('time')
+
+  const isPin = (hasWallpaper && !hasWallpaper.errors) && pin
+  if (isPin) return apliWallpaper(hasWallpaper)
 
   const pasTime = Date.now() - time
   const isValidBg = (hasWallpaper && !hasWallpaper.errors) && pasTime < maxTime
