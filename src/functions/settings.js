@@ -1,5 +1,8 @@
 import { $, addEvent } from '@/util/domElements'
 
-addEvent($('#settings'), 'click', function () {
-  window.alert('Muy Pronto!')
+const settings = $('#settings')
+
+addEvent($('#settings-btn'), 'click', function () {
+  settings.classList.add('visible')
+  settings.classList.remove('invisible')
 })
