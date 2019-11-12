@@ -1,0 +1,20 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@tailwind variants;
+
+@layer base {
+  *::selection {
+    @apply bg-slate-500 text-white;
+  }
+}
+
+@layer utilities {
+  .scrollbar-color::-webkit-scrollbar {
+    @apply bg-slate-600 w-2 rounded-lg
+  }
+
+  .scrollbar-color::-webkit-scrollbar-thumb {
+    @apply bg-slate-900 rounded-lg
+  }
+}
