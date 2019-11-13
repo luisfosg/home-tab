@@ -7,6 +7,14 @@
   *::selection {
     @apply bg-slate-500 text-white;
   }
+
+  input:-webkit-autofill,
+  input:-webkit-autofill:hover,
+  input:-webkit-autofill:focus,
+  input:-webkit-autofill:active  {
+    -webkit-text-fill-color: rgb(203 213 225 / var(--tw-text-opacity));
+    -webkit-box-shadow: 0 0 0px 1000px rgb(31 41 55) inset;
+  }
 }
 
 @layer utilities {
@@ -17,4 +25,5 @@
   .scrollbar-color::-webkit-scrollbar-thumb {
     @apply bg-slate-900 rounded-lg
   }
+
 }
