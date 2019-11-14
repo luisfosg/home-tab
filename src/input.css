@@ -14,10 +14,15 @@
   input:-webkit-autofill:active  {
     -webkit-text-fill-color: rgb(203 213 225 / var(--tw-text-opacity));
     -webkit-box-shadow: 0 0 0px 1000px rgb(31 41 55) inset;
+    caret-color: rgb(203 213 225 / var(--tw-text-opacity));
   }
 }
 
 @layer utilities {
+  .scrollbar-color {
+    scrollbar-gutter: stable;
+  }
+
   .scrollbar-color::-webkit-scrollbar {
     @apply bg-slate-600 w-2 rounded-lg
   }
@@ -25,5 +30,10 @@
   .scrollbar-color::-webkit-scrollbar-thumb {
     @apply bg-slate-900 rounded-lg
   }
+}
 
+@layer components {
+  .content-settings {
+    height: calc(100% - 2.5rem);
+  }
 }
