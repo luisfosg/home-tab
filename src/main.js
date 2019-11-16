@@ -1,5 +1,6 @@
 import '@/functions/search'
 import '@/functions/settings'
+import '@/functions/refresh'
 import { onLoadPin } from '@/functions/pin'
 
 import { getWallpaper } from '@/functions/background'
