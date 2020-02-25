@@ -1,5 +1,11 @@
-import { $ } from '@/util/domElements'
+import { $, addEvent } from '@/util/domElements'
 
 const btnRefresh = $('#refresh')
 
-console.log(btnRefresh)
+export const isVisible = (isActive) => {
+  btnRefresh.style.display = isActive ? 'block' : 'none'
+}
+
+addEvent(btnRefresh, 'click', () => {
+  window.alert('Muy Pronto!')
+})
