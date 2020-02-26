@@ -24,7 +24,5 @@ addEvent(pinIcon, 'click', function () {
 
 export const onLoadPin = () => {
   const pin = getStorage('pin')
-  const newPin = pin ? !!pin : true
-
-  updatePin(newPin)
+  updatePin(!!pin)
 }
