@@ -11,3 +11,7 @@ export const getStorage = (name) => {
     return null
   }
 }
+
+export const deleteStorage = (name) => {
+  window.localStorage.removeItem(name)
+}

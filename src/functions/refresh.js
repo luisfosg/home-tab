@@ -1,4 +1,7 @@
+import { getWallpaper } from '@/functions/background'
+
 import { $, addEvent } from '@/util/domElements'
+import { deleteStorage } from '@/util/storage'
 
 const btnRefresh = $('#refresh')
 
@@ -7,5 +10,6 @@ export const isVisible = (isActive) => {
 }
 
 addEvent(btnRefresh, 'click', () => {
-  window.alert('Muy Pronto!')
+  deleteStorage('time')
+  getWallpaper()
 })

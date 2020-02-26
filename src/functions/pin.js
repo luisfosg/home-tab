@@ -2,7 +2,7 @@ import { isVisible } from '@/functions/refresh'
 
 import { $, addEvent } from '@/util/domElements'
 import { PIN_ACTIVE, PIN_DEACTIVE } from '@/util/elements'
-import { getStorage, setStorage } from '@/util'
+import { getStorage, setStorage } from '@/util/storage'
 
 const pinIcon = $('#pinBg')
 

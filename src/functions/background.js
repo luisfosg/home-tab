@@ -1,5 +1,5 @@
 import { $ } from '@/util/domElements'
-import { setStorage, getStorage } from '@/util'
+import { setStorage, getStorage } from '@/util/storage'
 
 import { APIBG, queryBg, maxTime, defaultBg } from '@/config.json'
 
