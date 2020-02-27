@@ -9,6 +9,7 @@
     "lint": "standard --fix",
     "dev": "vite",
     "build": "vite build",
+    "build:extension": "cross-env VITE_EXTENSION=true vite build",
     "preview": "vite preview"
   },
   "devDependencies": {
@@ -23,5 +24,8 @@
       "/assets/",
       "/dist/"
     ]
+  },
+  "dependencies": {
+    "cross-env": "7.0.3"
   }
 }
