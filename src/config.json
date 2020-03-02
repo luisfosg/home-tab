@@ -7,7 +7,7 @@
   "defaultBg": {
     "urls":
     {
-      "regular":"https://images.unsplash.com/photo-1514600829688-8f77f424afd6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwyODU5ODJ8MHwxfHJhbmRvbXx8fHx8fHx8fDE2NDA3NDMxMTM&ixlib=rb-1.2.1&q=80&w=1080"
+      "regular":"/assets/default.jpg"
     }
   }
 }
