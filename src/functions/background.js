@@ -2,6 +2,7 @@ import { $ } from '@/util/domElements'
 import { setStorage, getStorage } from '@/util/storage'
 
 import { APIBG, queryBg, maxTime, defaultBg } from '@/config.json'
+import img from '#/assets/default.jpg'
 
 const API = APIBG.replace('{{query}}', queryBg)
 
@@ -19,30 +20,33 @@ const apliWallpaper = async (res) => {
 }
 
 export const getWallpaper = async () => {
-  const hasWallpaper = getStorage('wallpaper')
+  const wallpaper = getStorage('wallpaper')
   const pin = getStorage('pin')
   const time = getStorage('time')
 
-  const isPin = (hasWallpaper && !hasWallpaper.errors) && pin
-  if (isPin) return apliWallpaper(hasWallpaper)
+  const hasWallpaper = wallpaper && !wallpaper.errors
+  const isPin = hasWallpaper && pin
+  if (isPin) return apliWallpaper(wallpaper)
 
   const pasTime = Date.now() - time
-  const isValidBg = (hasWallpaper && !hasWallpaper.errors) && pasTime < maxTime
-  if (isValidBg) return apliWallpaper(hasWallpaper)
+  const isValidBg = hasWallpaper && pasTime < maxTime
+  if (isValidBg) return apliWallpaper(wallpaper)
 
-  let res
+  let newWallpaper
 
   try {
     const data = await window.fetch(API.replace('{{api}}', import.meta.env.VITE_UNSPLASH_KEY))
-    res = await data.json()
+    newWallpaper = await data.json()
 
-    if (res.errors) throw new Error(res.errors)
+    if (newWallpaper.errors) throw new Error(newWallpaper.errors)
   } catch (error) {
     console.log(error)
-    res = defaultBg
+
+    defaultBg.urls.regular = img
+    newWallpaper = defaultBg
   }
 
-  setStorage('wallpaper', res)
+  setStorage('wallpaper', newWallpaper)
   setStorage('time', Date.now())
-  apliWallpaper(res)
+  apliWallpaper(newWallpaper)
 }

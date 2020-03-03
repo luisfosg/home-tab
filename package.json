@@ -1,6 +1,6 @@
 {
   "name": "home-tab",
-  "version": "0.8.2",
+  "version": "0.8.3",
   "scripts": {
     "co": "npm run lint && git add . && sui-mono commit",
     "tail:dev": "npx tailwindcss -i ./src/input.css -o ./assets/main.css --watch",
