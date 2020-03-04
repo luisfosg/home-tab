@@ -2,37 +2,37 @@ import { defineConfig } from 'vite'
 import { minifyHtml } from 'vite-plugin-html'
 import { chromeExtension } from 'vite-plugin-chrome-extension'
 
-import { resolve } from 'path'
+import { resolve as resolvePath } from 'path'
+
+const samePlugins = [
+  minifyHtml()
+]
+
+const resolve = {
+  alias: {
+    '#': resolvePath(__dirname, './'),
+    '@': resolvePath(__dirname, './src')
+  }
+}
 
 export default defineConfig(() => {
   if (process.env.VITE_EXTENSION) {
     return {
       plugins: [
-        minifyHtml(),
+        ...samePlugins,
         chromeExtension()
       ],
-      resolve: {
-        alias: {
-          '@': resolve(__dirname, './src')
-        }
-      },
       build: {
         rollupOptions: {
           input: 'manifest.json'
         }
-      }
+      },
+      resolve
     }
   }
 
   return {
-    plugins: [
-      minifyHtml()
-    ],
-    resolve: {
-      alias: {
-        '#': resolve(__dirname, './'),
-        '@': resolve(__dirname, './src')
-      }
-    }
+    plugins: [...samePlugins],
+    resolve
   }
 })
