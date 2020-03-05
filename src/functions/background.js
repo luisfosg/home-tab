@@ -1,10 +1,15 @@
 import { $ } from '@/util/domElements'
 import { setStorage, getStorage } from '@/util/storage'
 
-import { APIBG, queryBg, maxTime, defaultBg } from '@/config.json'
+import { APIBG, defaultQuery, maxTime, defaultBg } from '@/config.json'
 import img from '#/assets/default.jpg'
 
-const API = APIBG.replace('{{query}}', queryBg)
+const getAPI = () => {
+  const queryStorage = getStorage('query')
+  const query = queryStorage || defaultQuery
+
+  return APIBG.replace('{query}', query)
+}
 
 const apliWallpaper = async (res) => {
   const {
@@ -19,7 +24,7 @@ const apliWallpaper = async (res) => {
   `
 }
 
-export const getWallpaper = async () => {
+const verifyBg = () => {
   const wallpaper = getStorage('wallpaper')
   const pin = getStorage('pin')
   const time = getStorage('time')
@@ -32,9 +37,18 @@ export const getWallpaper = async () => {
   const isValidBg = hasWallpaper && pasTime < maxTime
   if (isValidBg) return apliWallpaper(wallpaper)
 
+  return true
+}
+
+export const getWallpaper = async () => {
+  const existBg = verifyBg()
+  if (typeof existBg === 'object') return
+
   let newWallpaper
 
   try {
+    const API = getAPI()
+
     const data = await window.fetch(API.replace('{{api}}', import.meta.env.VITE_UNSPLASH_KEY))
     newWallpaper = await data.json()
 
