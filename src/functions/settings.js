@@ -10,6 +10,6 @@ const changeVisibility = () => {
 addEvent($('#settings-btn'), 'click', changeVisibility)
 addEvent($('#close_modal'), 'click', changeVisibility)
 
-window.addEventListener('click', (e) => {
+addEvent(window, 'click', (e) => {
   if (e.target === settings) changeVisibility()
 })

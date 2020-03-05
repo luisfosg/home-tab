@@ -1,13 +1,13 @@
 import { $ } from '@/util/domElements'
 import { setStorage, getStorage } from '@/util/storage'
 
-import { APIBG, defaultQuery, maxTime, defaultBg } from '@/config.json'
+import { getQuery } from '@/functions/query'
+
+import { APIBG, maxTime, defaultBg } from '@/config.json'
 import img from '#/assets/default.jpg'
 
 const getAPI = () => {
-  const queryStorage = getStorage('query')
-  const query = queryStorage || defaultQuery
-
+  const query = getQuery()
   return APIBG.replace('{query}', query)
 }
 
