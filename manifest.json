@@ -1,9 +1,14 @@
 {
   "name": "Home Tab",
-  "description": "Extension functionality ...",
-  "version": "0.8.2",
+  "description": "Tu nueva 'New Page', limpia y personalizable",
+  "version": "0.8.3",
   "author":"LuisFOsG",
   "manifest_version": 3,
+  "icons": {
+    "16": "assets/logo.png",
+    "48": "assets/logo.png",
+    "128": "assets/logo.png"
+  },
   "permissions": ["storage"],
   "chrome_url_overrides" : {
     "newtab": "index.html"
