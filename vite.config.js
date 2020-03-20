@@ -4,7 +4,7 @@ import { chromeExtension } from 'vite-plugin-chrome-extension'
 
 import { resolve as resolvePath } from 'path'
 
-import pugPlugin from './src/feat/pug'
+import pugPlugin from './src/pug'
 
 const samePlugins = [
   pugPlugin(),
