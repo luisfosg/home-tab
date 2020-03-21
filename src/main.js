@@ -1,3 +1,5 @@
+import '@/input.css'
+
 import '@/functions/search'
 import '@/functions/settings'
 import '@/functions/refresh'

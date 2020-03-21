@@ -18,6 +18,10 @@ const resolve = {
   }
 }
 
+const css = {
+  postcss: './postcss.config.js'
+}
+
 export default defineConfig(() => {
   if (process.env.VITE_EXTENSION) {
     return {
@@ -30,12 +34,14 @@ export default defineConfig(() => {
           input: 'manifest.json'
         }
       },
-      resolve
+      resolve,
+      css
     }
   }
 
   return {
     plugins: [...samePlugins],
-    resolve
+    resolve,
+    css
   }
 })
