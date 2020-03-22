@@ -30,7 +30,6 @@ const pugPlugin = () => {
         })
       }
     },
-
     transformIndexHtml: {
       enforce: 'pre',
       transform (html, { filename: htmlFile }) {

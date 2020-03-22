@@ -1,11 +1,9 @@
 {
   "name": "home-tab",
-  "version": "0.8.5",
+  "version": "0.9.1",
   "scripts": {
     "co": "npm run lint && git add . && sui-mono commit",
-    "tail:dev": "npx tailwindcss -i ./src/input.css -o ./assets/main.css --watch",
-    "tail:prod": "npx tailwindcss -i ./src/input.css -o ./assets/main.css --minify",
-    "deploy": "npm run tail:prod && npm run build && surge dist --domain https://hometab.surge.sh",
+    "deploy": "npm run build && surge dist --domain https://hometab.surge.sh",
     "lint": "standard --fix",
     "dev": "vite",
     "build": "vite build",

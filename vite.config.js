@@ -31,7 +31,10 @@ export default defineConfig(() => {
       ],
       build: {
         rollupOptions: {
-          input: 'manifest.json'
+          input: {
+            html: 'index.html',
+            manifest: 'manifest.json'
+          }
         }
       },
       resolve,
