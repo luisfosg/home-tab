@@ -15,10 +15,10 @@
     "autoprefixer": "10.4.2",
     "postcss": "8.4.5",
     "pug": "3.0.2",
+    "rollup-plugin-copy": "3.4.0",
     "standard": "16.0.4",
     "tailwindcss": "3.0.8",
     "vite": "2.7.10",
-    "vite-plugin-chrome-extension": "0.0.7",
     "vite-plugin-html": "2.1.2"
   },
   "dependencies": {

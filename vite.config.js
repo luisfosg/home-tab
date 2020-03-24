@@ -1,6 +1,6 @@
 import { defineConfig } from 'vite'
 import { minifyHtml } from 'vite-plugin-html'
-import { chromeExtension } from 'vite-plugin-chrome-extension'
+import copy from 'rollup-plugin-copy'
 
 import { resolve as resolvePath } from 'path'
 
@@ -27,16 +27,13 @@ export default defineConfig(() => {
     return {
       plugins: [
         ...samePlugins,
-        chromeExtension()
+        copy({
+          hook: 'writeBundle',
+          targets: [
+            { src: ['./manifest.json', './src/extension'], dest: './dist' }
+          ]
+        })
       ],
-      build: {
-        rollupOptions: {
-          input: {
-            html: 'index.html',
-            manifest: 'manifest.json'
-          }
-        }
-      },
       resolve,
       css
     }
