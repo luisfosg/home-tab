@@ -1,4 +1,8 @@
-# Home Tab
+<div align="center">
+
+  # 🏠 Home Tab
+
+</div>
 
 ![Home Tab](.assets/hometab.png)
 
