@@ -1,6 +1,6 @@
 import { $, addEvent } from '@/util/domElements'
 
-const input = $('#search-input')
+const input = $('#search_input')
 
 function urlify (text) {
   const urlRegex = /(https?:\/\/[^\s]+)/g

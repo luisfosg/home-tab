@@ -1,4 +1,5 @@
 import { $, addEvent } from '@/util/domElements'
+import { setStorage } from '@/util/storage'
 
 import { getQuery } from '@/functions/query'
 
@@ -21,8 +22,13 @@ const setValues = () => {
   inputQuery.value = queryBg
 }
 
-addEvent($('#settings-btn'), 'click', changeVisibility)
+const saveConfig = () => {
+  setStorage('query', inputQuery.value)
+}
+
+addEvent($('#settings_btn'), 'click', changeVisibility)
 addEvent($('#close_modal'), 'click', changeVisibility)
+addEvent($('#save_config'), 'click', saveConfig)
 
 addEvent(window, 'click', (e) => {
   if (e.target === settings) changeVisibility()

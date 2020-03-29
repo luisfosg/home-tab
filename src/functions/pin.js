@@ -4,7 +4,7 @@ import { $, addEvent } from '@/util/domElements'
 import { PIN_ACTIVE, PIN_DEACTIVE } from '@/util/elements'
 import { getStorage, setStorage } from '@/util/storage'
 
-const pinIcon = $('#pinBg')
+const pinIcon = $('#pin_bg')
 
 const updatePin = (pin) => {
   pin
