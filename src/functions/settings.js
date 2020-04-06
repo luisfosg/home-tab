@@ -1,5 +1,6 @@
 import { $, addEvent } from '@/util/domElements'
 import { setStorage } from '@/util/storage'
+import { waitFor } from '@/util'
 
 import { getQuery } from '@/functions/query'
 
@@ -22,8 +23,13 @@ const setValues = () => {
   inputQuery.value = queryBg
 }
 
-const saveConfig = () => {
+const saveConfig = async () => {
   setStorage('query', inputQuery.value)
+  const alert = $('#alert')
+
+  alert.classList.remove('hidden')
+  await waitFor(1100)
+  alert.classList.add('hidden')
 }
 
 addEvent($('#settings_btn'), 'click', changeVisibility)
