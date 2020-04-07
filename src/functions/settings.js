@@ -30,6 +30,8 @@ const saveConfig = async () => {
   alert.classList.remove('hidden')
   await waitFor(1100)
   alert.classList.add('hidden')
+  await waitFor(200)
+  changeVisibility()
 }
 
 addEvent($('#settings_btn'), 'click', changeVisibility)
