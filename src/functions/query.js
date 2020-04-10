@@ -9,3 +9,8 @@ export const getQuery = () => {
 
   return queryStorage || defaultQuery
 }
+
+export const configQuery = (newValue) => {
+  setStorage('query', newValue)
+  return true
+}

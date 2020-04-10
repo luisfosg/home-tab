@@ -1,8 +1,7 @@
 import { $, addEvent } from '@/util/domElements'
-import { setStorage } from '@/util/storage'
-import { waitFor } from '@/util'
 
-import { getQuery } from '@/functions/query'
+import { getQuery, configQuery } from '@/functions/query'
+import { showAlert } from '@/functions/alert'
 
 const settings = $('#settings')
 export let isActiveSettings = false
@@ -10,7 +9,7 @@ export let isActiveSettings = false
 /* Inputs */
 const inputQuery = $('#query-bg')
 
-const changeVisibility = () => {
+export const changeVisibility = () => {
   settings.classList.toggle('visible')
   settings.classList.toggle('invisible')
 
@@ -23,15 +22,21 @@ const setValues = () => {
   inputQuery.value = queryBg
 }
 
-const saveConfig = async () => {
-  setStorage('query', inputQuery.value)
-  const alert = $('#alert')
+const saveConfig = () => {
+  const isValid = configQuery(inputQuery.value)
 
-  alert.classList.remove('hidden')
-  await waitFor(1100)
-  alert.classList.add('hidden')
-  await waitFor(200)
-  changeVisibility()
+  if (!isValid) {
+    return showAlert({
+      error: true,
+      title: 'Error al Guardar los Ajustes',
+      msg: 'No se encontro ninguna coincidencia'
+    })
+  }
+
+  return showAlert({
+    title: 'Ajustes Guardados Correctamente',
+    msg: 'Los cambios serán aplicados automaticamente'
+  })
 }
 
 addEvent($('#settings_btn'), 'click', changeVisibility)
