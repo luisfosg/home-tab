@@ -3,13 +3,13 @@ import { getWallpaper } from '@/functions/background'
 import { $, addEvent } from '@/util/domElements'
 import { deleteStorage } from '@/util/storage'
 
-const btnRefresh = $('#refresh')
+const $btnRefresh = $('#refresh')
 
 export const isVisible = (isActive) => {
-  btnRefresh.style.display = isActive ? 'block' : 'none'
+  $btnRefresh.style.display = isActive ? 'block' : 'none'
 }
 
-addEvent(btnRefresh, 'click', () => {
+addEvent($btnRefresh, 'click', () => {
   deleteStorage('time')
   getWallpaper()
 })

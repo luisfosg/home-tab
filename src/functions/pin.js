@@ -4,17 +4,17 @@ import { $, addEvent } from '@/util/domElements'
 import { PIN_ACTIVE, PIN_DEACTIVE } from '@/util/elements'
 import { getStorage, setStorage } from '@/util/storage'
 
-const pinIcon = $('#pin_bg')
+const $pinIcon = $('#pin_bg')
 
 const updatePin = (pin) => {
   pin
-    ? pinIcon.innerHTML = PIN_ACTIVE
-    : pinIcon.innerHTML = PIN_DEACTIVE
+    ? $pinIcon.innerHTML = PIN_ACTIVE
+    : $pinIcon.innerHTML = PIN_DEACTIVE
 
   isVisible(!pin)
 }
 
-addEvent(pinIcon, 'click', function () {
+addEvent($pinIcon, 'click', function () {
   const pin = getStorage('pin')
   const newPin = pin ? !pin : true
 

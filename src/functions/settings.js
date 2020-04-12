@@ -3,27 +3,27 @@ import { $, addEvent } from '@/util/domElements'
 import { getQuery, configQuery } from '@/functions/query'
 import { showAlert } from '@/functions/alert'
 
-const settings = $('#settings')
+const $settings = $('#settings')
 export let isActiveSettings = false
 
 /* Inputs */
-const inputQuery = $('#query-bg')
+const $inputQuery = $('#query-bg')
 
 export const changeVisibility = () => {
-  settings.classList.toggle('visible')
-  settings.classList.toggle('invisible')
+  $settings.classList.toggle('visible')
+  $settings.classList.toggle('invisible')
 
-  isActiveSettings = !!settings.classList.contains('visible')
+  isActiveSettings = !!$settings.classList.contains('visible')
   if (isActiveSettings) setValues()
 }
 
 const setValues = () => {
   const queryBg = getQuery()
-  inputQuery.value = queryBg
+  $inputQuery.value = queryBg
 }
 
 const saveConfig = () => {
-  const isValid = configQuery(inputQuery.value)
+  const isValid = configQuery($inputQuery.value)
 
   if (!isValid) {
     return showAlert({
@@ -44,5 +44,5 @@ addEvent($('#close_modal'), 'click', changeVisibility)
 addEvent($('#save_config'), 'click', saveConfig)
 
 addEvent(window, 'click', (e) => {
-  if (e.target === settings) changeVisibility()
+  if (e.target === $settings) changeVisibility()
 })

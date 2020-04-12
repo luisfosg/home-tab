@@ -16,9 +16,9 @@ const apliWallpaper = async (res) => {
     urls: { regular }
   } = res
 
-  const wallpaper = $('#wallpaper')
+  const $wallpaper = $('#wallpaper')
 
-  wallpaper.style = `
+  $wallpaper.style = `
     background: url('${regular.replace('1080', '1440')}') center center no-repeat;
     background-size: cover;
   `

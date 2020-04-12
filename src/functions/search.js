@@ -1,6 +1,6 @@
 import { $, addEvent } from '@/util/domElements'
 
-const input = $('#search_input')
+const $input = $('#search_input')
 
 function urlify (text) {
   const urlRegex = /(https?:\/\/[^\s]+)/g
@@ -16,7 +16,7 @@ function urlify (text) {
 const searchQuery = (e) => {
   e.preventDefault()
 
-  const query = input.value.trim()
+  const query = $input.value.trim()
   const [isURL, newURL] = urlify(query)
 
   isURL
