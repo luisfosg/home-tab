@@ -4,8 +4,12 @@
 @tailwind variants;
 
 @layer base {
+  * {
+    @apply outline-none;
+  }
+
   *::selection {
-    @apply bg-slate-500 text-white;
+    @apply text-white bg-slate-500;
   }
 
   input:-webkit-autofill,
@@ -25,11 +29,11 @@
   }
 
   .scrollbar-color::-webkit-scrollbar {
-    @apply bg-slate-600 w-2 rounded-lg;
+    @apply w-2 rounded-lg bg-slate-600;
   }
 
   .scrollbar-color::-webkit-scrollbar-thumb {
-    @apply bg-slate-900 rounded-lg;
+    @apply rounded-lg bg-slate-900;
   }
 }
 
