@@ -10,6 +10,6 @@
 - [x] search url and query
 - [x] pin a background
 - [x] automatic background change
-- [ ] change the theme of the images
+- [x] change the theme of the images
 - [ ] select your own background
 - [ ] color change and opacity

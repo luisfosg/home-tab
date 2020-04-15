@@ -6,9 +6,10 @@ import { getQuery } from '@/functions/query'
 import { APIBG, maxTime, defaultBg } from '@/config.json'
 import img from '#/assets/default.jpg'
 
-const getAPI = () => {
+export const getAPI = (newQuery) => {
   const query = getQuery()
-  return APIBG.replace('{query}', query)
+
+  return APIBG.replace('{query}', newQuery || query)
 }
 
 const apliWallpaper = async (res) => {

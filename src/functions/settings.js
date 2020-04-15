@@ -1,4 +1,5 @@
 import { $, addEvent } from '@/util/domElements'
+import { LOADING } from '@/util/elements'
 
 import { getQuery, configQuery } from '@/functions/query'
 import { showAlert } from '@/functions/alert'
@@ -14,22 +15,32 @@ export const changeVisibility = () => {
   $settings.classList.toggle('invisible')
 
   isActiveSettings = !!$settings.classList.contains('visible')
-  if (isActiveSettings) setValues()
+  if (isActiveSettings) setInitialValues()
 }
 
-const setValues = () => {
+const setInitialValues = () => {
   const queryBg = getQuery()
   $inputQuery.value = queryBg
 }
 
-const saveConfig = () => {
-  const isValid = configQuery($inputQuery.value)
+const setFinalValues = () => {}
+
+const saveConfig = async () => {
+  const $saveButton = $('#save_config')
+  $saveButton.disabled = true
+  $saveButton.innerHTML = LOADING
+
+  setFinalValues()
+  const isValid = await configQuery($inputQuery.value)
+
+  $saveButton.disabled = false
+  $saveButton.innerHTML = 'Guardar Cambios'
 
   if (!isValid) {
     return showAlert({
       error: true,
       title: 'Error al Guardar los Ajustes',
-      msg: 'No se encontro ninguna coincidencia'
+      msg: 'No se encontro ninguna coincidencia para el tema seleccionado'
     })
   }
 
