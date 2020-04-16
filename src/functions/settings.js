@@ -1,6 +1,7 @@
 import { $, addEvent } from '@/util/domElements'
 import { LOADING } from '@/util/elements'
 
+import { ownWallpaper } from '@/functions/background'
 import { getQuery, configQuery } from '@/functions/query'
 import { showAlert } from '@/functions/alert'
 
@@ -9,6 +10,7 @@ export let isActiveSettings = false
 
 /* Inputs */
 const $inputQuery = $('#query-bg')
+const $ownBg = $('#own-bg')
 
 export const changeVisibility = () => {
   $settings.classList.toggle('visible')
@@ -21,6 +23,7 @@ export const changeVisibility = () => {
 const setInitialValues = () => {
   const queryBg = getQuery()
   $inputQuery.value = queryBg
+  $ownBg.value = ''
 }
 
 const setFinalValues = () => {}
@@ -31,6 +34,7 @@ const saveConfig = async () => {
   $saveButton.innerHTML = LOADING
 
   setFinalValues()
+  ownWallpaper()
   const isValid = await configQuery($inputQuery.value)
 
   $saveButton.disabled = false
