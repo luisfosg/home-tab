@@ -1,6 +1,6 @@
 {
   "name": "home-tab",
-  "version": "0.9.3",
+  "version": "0.10.0",
   "scripts": {
     "co": "npm run lint && git add . && sui-mono commit",
     "deploy": "npm run build && surge dist --domain https://hometab.surge.sh",

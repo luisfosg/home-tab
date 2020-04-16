@@ -1,7 +1,8 @@
 import { $, addEvent } from '@/util/domElements'
+import { getStorage, deleteStorage } from '@/util/storage'
 import { LOADING } from '@/util/elements'
 
-import { ownWallpaper } from '@/functions/background'
+import { ownWallpaper, getWallpaper } from '@/functions/background'
 import { getQuery, configQuery } from '@/functions/query'
 import { showAlert } from '@/functions/alert'
 
@@ -21,9 +22,30 @@ export const changeVisibility = () => {
 }
 
 const setInitialValues = () => {
-  const queryBg = getQuery()
-  $inputQuery.value = queryBg
-  $ownBg.value = ''
+  const ownBg = getStorage('ownBg')
+  const $textOwnBg = $('#text-own-bg')
+  const $themeBgConfig = $('#theme-bg-config')
+
+  ownBg ? $textOwnBg.textContent = 'Ya tienes tu propia Imagen: ' : $textOwnBg.textContent = 'Subir mi propia imagen: '
+  ownBg ? $ownBg.classList.add('hidden') : $ownBg.classList.remove('hidden')
+  ownBg ? $themeBgConfig.classList.add('hidden') : $themeBgConfig.classList.remove('hidden')
+
+  const $deleteOwnBg = $('#delete-own-bg')
+  if (ownBg) {
+    $deleteOwnBg.classList.remove('hidden')
+
+    addEvent($deleteOwnBg, 'click', () => {
+      deleteStorage('ownBg')
+      getWallpaper()
+      setInitialValues()
+    })
+  } else {
+    const queryBg = getQuery()
+    $inputQuery.value = queryBg
+    $ownBg.value = ''
+
+    $deleteOwnBg.classList.add('hidden')
+  }
 }
 
 const setFinalValues = () => {}
