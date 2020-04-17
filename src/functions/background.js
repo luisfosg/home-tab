@@ -2,6 +2,7 @@ import { $ } from '@/util/domElements'
 import { setStorage, getStorage } from '@/util/storage'
 
 import { getQuery } from '@/functions/query'
+import { refreshPins } from '@/functions/pin'
 
 import { APIBG, maxTime, defaultBg } from '@/config.json'
 import img from '#/assets/default.jpg'
@@ -85,6 +86,7 @@ export const ownWallpaper = () => {
       return function (e) {
         setStorage('ownBg', e.target.result)
         apliWallpaper({ img: e.target.result })
+        refreshPins()
       }
     })(blobURL)
 

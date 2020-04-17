@@ -5,13 +5,24 @@ import { PIN_ACTIVE, PIN_DEACTIVE } from '@/util/elements'
 import { getStorage, setStorage } from '@/util/storage'
 
 const $pinIcon = $('#pin_bg')
+export let ownPin = false
 
-const updatePin = (pin) => {
-  pin
-    ? $pinIcon.innerHTML = PIN_ACTIVE
-    : $pinIcon.innerHTML = PIN_DEACTIVE
+export const refreshPins = () => {
+  const pin = getStorage('pin')
+  const isOwnBg = getStorage('ownBg')
+  isOwnBg ? ownPin = true : ownPin = false
 
-  isVisible(!pin)
+  if (ownPin) {
+    $pinIcon.classList.add('hidden')
+    isVisible(false)
+  } else {
+    $pinIcon.classList.remove('hidden')
+    pin
+      ? $pinIcon.innerHTML = PIN_ACTIVE
+      : $pinIcon.innerHTML = PIN_DEACTIVE
+
+    isVisible(!pin)
+  }
 }
 
 addEvent($pinIcon, 'click', function () {
@@ -19,10 +30,5 @@ addEvent($pinIcon, 'click', function () {
   const newPin = pin ? !pin : true
 
   setStorage('pin', newPin)
-  updatePin(newPin)
+  refreshPins(newPin)
 })
-
-export const onLoadPin = () => {
-  const pin = getStorage('pin')
-  updatePin(!!pin)
-}

@@ -3,6 +3,7 @@ import { getStorage, deleteStorage } from '@/util/storage'
 import { LOADING } from '@/util/elements'
 
 import { ownWallpaper, getWallpaper } from '@/functions/background'
+import { refreshPins } from '@/functions/pin'
 import { getQuery, configQuery } from '@/functions/query'
 import { showAlert } from '@/functions/alert'
 
@@ -38,6 +39,7 @@ const setInitialValues = () => {
       deleteStorage('ownBg')
       getWallpaper()
       setInitialValues()
+      refreshPins()
     })
   } else {
     const queryBg = getQuery()
