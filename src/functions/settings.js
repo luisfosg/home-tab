@@ -37,8 +37,9 @@ const setInitialValues = () => {
 
     addEvent($deleteOwnBg, 'click', () => {
       deleteStorage('ownBg')
-      getWallpaper()
       setInitialValues()
+      refreshPins()
+      getWallpaper()
       refreshPins()
     })
   } else {
@@ -47,6 +48,7 @@ const setInitialValues = () => {
     $ownBg.value = ''
 
     $deleteOwnBg.classList.add('hidden')
+    refreshPins()
   }
 }
 
