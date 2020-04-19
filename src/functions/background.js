@@ -82,7 +82,7 @@ export const ownWallpaper = () => {
 
     const reader = new window.FileReader()
 
-    reader.onload = (function (theFile) {
+    reader.onload = (function (_theFile) {
       return function (e) {
         setStorage('ownBg', e.target.result)
         apliWallpaper({ img: e.target.result })

@@ -1,4 +1,4 @@
-import { isVisible } from '@/functions/refresh'
+import { isVisiblePinRefresh } from '@/functions/refresh'
 
 import { $, addEvent } from '@/util/domElements'
 import { PIN_ACTIVE, PIN_DEACTIVE } from '@/util/elements'
@@ -14,14 +14,14 @@ export const refreshPins = () => {
 
   if (ownPin) {
     $pinIcon.classList.add('hidden')
-    isVisible(false)
+    isVisiblePinRefresh(false)
   } else {
     $pinIcon.classList.remove('hidden')
     pin
       ? $pinIcon.innerHTML = PIN_ACTIVE
       : $pinIcon.innerHTML = PIN_DEACTIVE
 
-    isVisible(!pin)
+    isVisiblePinRefresh(!pin)
   }
 }
 

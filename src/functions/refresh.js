@@ -5,7 +5,7 @@ import { deleteStorage } from '@/util/storage'
 
 const $btnRefresh = $('#refresh')
 
-export const isVisible = (isActive) => {
+export const isVisiblePinRefresh = (isActive) => {
   $btnRefresh.style.display = isActive ? 'block' : 'none'
 }
 
