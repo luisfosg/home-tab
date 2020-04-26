@@ -1,4 +1,7 @@
 import { $, addEvent } from '@/util/domElements'
+import { capitalize } from '@/util'
+
+import { defaultSearchEngine, searchEngine } from '@/config.json'
 
 const $input = $('#search_input')
 
@@ -21,9 +24,10 @@ const searchQuery = (e) => {
 
   isURL
     ? window.location.href = newURL
-    : window.location.href = `https://www.google.com/search?q=${query}`
+    : window.location.href = searchEngine[defaultSearchEngine].replace('{{query}}', query)
 
   e.target.reset()
 }
 
 addEvent($('#search'), 'submit', searchQuery)
+$input.placeholder = `Busca en ${capitalize(defaultSearchEngine)} o escribe una URL`
