@@ -16,17 +16,7 @@ include ../alert.pug
   <div class="flex flex-col items-center justify-center w-full max-w-full p-5 border-slate-400/20 md:items-start md:justify-start">
     <strong class="text-slate-400">Motor de Busqueda: </strong>(En Desarrollo)
 
-    <label class="ml-2 mt-2 cursor-pointer">
-      <input class="accent-slate-800" type="radio" value="0" name="radio" checked>
-      <span>Google</span>
-      <input class="px-4 py-2 ml-3 text-lg rounded shadow-sm outline-none appearance-none bg-slate-600/50 md:text-xl h-8 hover:bg-gray-600/80" placeholder="Google - Search Engine" value="https://www.google.com/search?q={{query}}">
-    </label>
-
-    <label class="ml-2 mt-2 cursor-pointer">
-      <input class="accent-slate-800" type="radio" value="1" name="radio">
-      <span>DuckDuckGo</span>
-      <input class="px-4 py-2 ml-3 text-lg rounded shadow-sm outline-none appearance-none bg-slate-600/50 md:text-xl h-8 hover:bg-gray-600/80" placeholder="DuckDuckGo - Search Engine" value="https://duckduckgo.com/?q={{query}}">
-    </label>
+    <div id="search-engine-container" class="flex flex-col"></div>
 
   </div>
 

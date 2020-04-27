@@ -3,6 +3,7 @@ import { getStorage, deleteStorage } from '@/util/storage'
 import { LOADING } from '@/util/elements'
 
 import { ownWallpaper, getWallpaper } from '@/functions/background'
+import { loadSearchEngine } from '@/functions/search'
 import { refreshPins } from '@/functions/pin'
 import { getQuery, configQuery } from '@/functions/query'
 import { showAlert } from '@/functions/alert'
@@ -23,6 +24,8 @@ export const changeVisibility = () => {
 }
 
 const setInitialValues = () => {
+  loadSearchEngine()
+
   const ownBg = getStorage('ownBg')
   const $textOwnBg = $('#text-own-bg')
   const $themeBgConfig = $('#theme-bg-config')
