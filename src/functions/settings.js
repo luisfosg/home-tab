@@ -3,7 +3,7 @@ import { getStorage, deleteStorage } from '@/util/storage'
 import { LOADING } from '@/util/elements'
 
 import { ownWallpaper, getWallpaper } from '@/functions/background'
-import { loadSearchEngine } from '@/functions/search'
+import { loadSearchEngine, saveSearchEngine } from '@/functions/search'
 import { refreshPins } from '@/functions/pin'
 import { getQuery, configQuery } from '@/functions/query'
 import { showAlert } from '@/functions/alert'
@@ -55,7 +55,10 @@ const setInitialValues = () => {
   }
 }
 
-const setFinalValues = () => {}
+const setFinalValues = () => {
+  const $searchEngine = $('input[name="search-engine"]:checked')
+  saveSearchEngine($searchEngine.value)
+}
 
 const saveConfig = async () => {
   const $saveButton = $('#save_config')
