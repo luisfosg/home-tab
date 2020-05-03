@@ -11,5 +11,7 @@
 - [x] pin a background
 - [x] automatic background change
 - [x] change the theme of the images
-- [ ] select your own background
+- [x] select your own background
+- [ ] change search engine
 - [ ] color change and opacity
+- [ ] localhost with a number - *(Optional)*
