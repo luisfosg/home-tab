@@ -30,9 +30,12 @@ const searchQuery = (e) => {
   const query = $input.value.trim()
   const [isURL, newURL] = urlify(query)
 
+  const savedSearchEngine = getStorage('searchsEngine')
+  const useSearchEngine = savedSearchEngine || searchEngine
+
   isURL
     ? window.location.href = newURL
-    : window.location.href = searchEngine[storageSearchEngine || defaultSearchEngine].replace('{{query}}', query)
+    : window.location.href = useSearchEngine[storageSearchEngine || defaultSearchEngine].replace('{{query}}', query)
 
   e.target.reset()
 }
