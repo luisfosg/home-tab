@@ -72,7 +72,9 @@ export const saveSearchEngine = (newSearchEngine) => {
   const lastSearchEngine = getStorage('searchsEngine')
 
   inputs.forEach(input => {
-    lastSearchEngine[input.name] = input.value
+    const newValue = input.value.startsWith('https://') || input.value.startsWith('http://') ? input.value : `https://${input.value}`
+    if (newValue.includes(' ') || !newValue.includes('.')) return
+    lastSearchEngine[input.name] = newValue
   })
 
   setStorage('searchsEngine', lastSearchEngine)
