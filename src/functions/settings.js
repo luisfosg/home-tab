@@ -7,6 +7,7 @@ import { loadSearchEngine, saveSearchEngine } from '@/functions/search'
 import { refreshPins } from '@/functions/pin'
 import { getQuery, configQuery } from '@/functions/query'
 import { showAlert } from '@/functions/alert'
+import resetSettings from '@/functions/resetSettings'
 
 const $settings = $('#settings')
 export let isActiveSettings = false
@@ -23,7 +24,7 @@ export const changeVisibility = () => {
   if (isActiveSettings) setInitialValues()
 }
 
-const setInitialValues = () => {
+export const setInitialValues = () => {
   loadSearchEngine()
 
   const ownBg = getStorage('ownBg')
@@ -41,7 +42,6 @@ const setInitialValues = () => {
     addEvent($deleteOwnBg, 'click', () => {
       deleteStorage('ownBg')
       setInitialValues()
-      refreshPins()
       getWallpaper()
       refreshPins()
     })
@@ -89,6 +89,7 @@ const saveConfig = async () => {
 addEvent($('#settings_btn'), 'click', changeVisibility)
 addEvent($('#close_modal'), 'click', changeVisibility)
 addEvent($('#save_config'), 'click', saveConfig)
+addEvent($('#reset-settings'), 'click', resetSettings)
 
 addEvent(window, 'click', (e) => {
   if (e.target === $settings) changeVisibility()

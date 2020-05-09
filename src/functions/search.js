@@ -63,7 +63,9 @@ export const loadSearchEngine = () => {
 }
 
 export const saveSearchEngine = (newSearchEngine) => {
-  if (searchEngine[newSearchEngine]) {
+  const savedSearchEngine = getStorage('searchsEngine')
+
+  if (savedSearchEngine[newSearchEngine]) {
     setStorage('defaultSearchEngine', newSearchEngine)
     updateInputSearch()
   }
