@@ -2,6 +2,7 @@ import { setStorage, deleteStorage } from '@/util/storage'
 
 import { getWallpaper } from '@/functions/background'
 import { refreshPins } from '@/functions/pin'
+import { updateInputSearch } from '@/functions/search'
 import { setInitialValues } from '@/functions/settings'
 
 import { defaultQuery, defaultSearchEngine, searchEngine } from '@/config.json'
@@ -16,6 +17,7 @@ const resetSettings = () => {
   setInitialValues()
   getWallpaper()
   refreshPins()
+  updateInputSearch()
 }
 
 export default resetSettings

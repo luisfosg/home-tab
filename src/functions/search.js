@@ -17,7 +17,7 @@ function urlify (text) {
     : [false, text]
 }
 
-function updateInputSearch () {
+export const updateInputSearch = () => {
   const storageSearchEngine = getStorage('defaultSearchEngine')
   $input.placeholder = `Busca en ${capitalize(storageSearchEngine || defaultSearchEngine)} o escribe una URL`
 }
