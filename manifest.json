@@ -1,7 +1,7 @@
 {
   "name": "Home Tab",
   "description": "Tu nueva 'New Page', limpia y personalizable",
-  "version": "0.11.2",
+  "version": "0.12.3",
   "author":"LuisFOsG",
   "manifest_version": 3,
   "icons": {
