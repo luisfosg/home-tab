@@ -9,21 +9,21 @@ include ../alert.pug
 
   <div class="flex flex-col items-center justify-center w-full max-w-full p-5 border-b md:flex-row border-slate-400/20 md:justify-start">
     <strong id="text-own-bg" class="text-slate-400">Subir mi propia imagen: </strong>
-    <input id="own-bg" type="file" accept="image/*" class="ml-3 appearance-none md:text-xl h-11 file:mr-4 file:py-2 file:px-2 file:rounded-lg file:border-0 file:text-lg file:font-semibold file:bg-slate-400/20 file:text-white hover:file:bg-gray-600/80 cursor-pointer file:cursor-pointer hover:text-slate-400">
-    <button id="delete-own-bg" class="p-2 px-4 ml-2 bg-red-500/50 rounded-lg hover:bg-red-600">Eliminar</button>
+    <input id="own-bg" type="file" accept="image/*" class="ml-3 appearance-none cursor-pointer md:text-xl h-11 file:mr-4 file:py-2 file:px-2 file:rounded-lg file:border-0 file:text-lg file:font-semibold file:bg-slate-400/20 file:text-white hover:file:bg-gray-600/80 file:cursor-pointer hover:text-slate-400">
+    <button id="delete-own-bg" class="p-2 px-4 ml-2 rounded-lg bg-red-500/50 hover:bg-red-600">Eliminar</button>
   </div>
 
   <div class="flex flex-col items-center justify-center w-full max-w-full p-5 border-b border-slate-400/20 md:items-start md:justify-start">
     <strong class="text-slate-400">Motor de Busqueda: </strong>
 
-    <div id="search-engine-container" class="flex flex-col mt-3"></div>
+    <div id="search-engine-container" class="flex flex-col md:mt-3"></div>
 
   </div>
 
-  <div class="flex flex-col items-center justify-center w-full max-w-full p-5 md:flex-row border-slate-400/20 md:justify-start">
-    <strong class="text-slate-400">Restablecer la Configuración: </strong>
+  <div class="flex flex-col items-center justify-center w-full max-w-full p-5 border-slate-400/20 md:justify-start">
+    <strong class="text-slate-400">Restablecer la Configuración</strong>
 
-    <button id="reset-settings" class="p-2 px-4 ml-2 bg-slate-700 rounded-lg hover:bg-gray-600/80">Cambiar a Valores Predeterminados</button>
+    <button id="reset-settings" class="p-2 px-4 ml-2 rounded-lg bg-slate-700 hover:bg-gray-600/80">Cambiar a Valores Predeterminados</button>
   </div>
 
 </div>
