@@ -1,5 +1,5 @@
 import { defineConfig } from 'vite'
-import { minifyHtml } from 'vite-plugin-html'
+import { createHtmlPlugin } from 'vite-plugin-html'
 import { chromeExtension } from 'vite-plugin-chrome-extension'
 import copy from 'rollup-plugin-copy'
 
@@ -9,7 +9,9 @@ import pugPlugin from './src/pug'
 
 const samePlugins = [
   pugPlugin(),
-  minifyHtml()
+  createHtmlPlugin({
+    minify: true
+  })
 ]
 
 const resolve = {
