@@ -1,4 +1,4 @@
-import { $, $$, addEvent } from '@/util/domElements'
+import { $, $$, addEvent, addEvents } from '@/util/domElements'
 import { getStorage, setStorage } from '@/util/storage'
 import { capitalize } from '@/util'
 
@@ -50,14 +50,26 @@ export const loadSearchEngine = () => {
   $searchsEngine.innerHTML = ''
   for (const [name, url] of Object.entries(useSearchEngine)) {
     const isChecked = (storageSearchEngine || defaultSearchEngine) === name
+
     $searchsEngine.innerHTML += `
       <label class="ml-2 mt-2 cursor-pointer">
         <input class="accent-slate-800 cursor-pointer" type="radio" value="${name}" name="search-engine" ${isChecked && 'checked'}>
         <span class="select-none">${capitalize(name)}</span>
         <input id="url-search-engine" name="${capitalize(name)}" class="px-4 py-2 ml-3 text-lg rounded shadow-sm outline-none appearance-none bg-slate-600/50 md:text-xl h-8 hover:bg-gray-600/80" placeholder="${capitalize(name)} - Search Engine" value="${url}">
+        <button id="delete-search-engine" class="px-2 ml-2 rounded-lg bg-red-500/50 hover:bg-red-600">×</button>
       </label>
     `
   }
+
+  addEvents($$('#delete-search-engine'), 'click', (e) => {
+    const $target = e.target
+    const $parent = $target.parentNode
+    const $input = $parent.querySelectorAll('input')[1]
+
+    $parent.remove()
+    delete useSearchEngine[$input.name]
+    setStorage('searchsEngine', useSearchEngine)
+  })
 
   setStorage('searchsEngine', useSearchEngine)
 }

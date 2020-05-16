@@ -10,3 +10,11 @@ export function addEvent ($elmDom, evt, callback) {
     return $elmDom.addEventListener(evt, callback, false)
   }
 }
+
+export function addEvents ($elmsDom, evt, callback) {
+  if (!$elmsDom) return
+
+  for (const i in Object.entries($elmsDom)) {
+    addEvent($elmsDom[i], evt, callback)
+  }
+}
