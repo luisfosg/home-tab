@@ -55,7 +55,7 @@ export const loadSearchEngine = () => {
       <label class="ml-2 mt-2 cursor-pointer">
         <input class="accent-slate-800 cursor-pointer" type="radio" value="${name}" name="search-engine" ${isChecked && 'checked'}>
         <span class="select-none">${capitalize(name)}</span>
-        <input id="url-search-engine" name="${capitalize(name)}" class="px-4 py-2 ml-3 text-lg rounded shadow-sm outline-none appearance-none bg-slate-600/50 md:text-xl h-8 hover:bg-gray-600/80" placeholder="${capitalize(name)} - Search Engine" value="${url}">
+        <input id="url-search-engine" name="${name}" class="px-4 py-2 ml-3 text-lg rounded shadow-sm outline-none appearance-none bg-slate-600/50 md:text-xl h-8 hover:bg-gray-600/80" placeholder="${capitalize(name)} - Search Engine" value="${url}">
         <button id="delete-search-engine" class="px-2 ml-2 rounded-lg bg-red-500/50 hover:bg-red-600">×</button>
       </label>
     `
@@ -94,5 +94,19 @@ export const saveSearchEngine = (newSearchEngine) => {
   setStorage('searchsEngine', lastSearchEngine)
 }
 
+export const saveNewSearchEngine = () => {
+  const $data = $('#new-search-engine').value.trim()
+  if ($data === '') return
+
+  const savedSearchEngine = getStorage('searchsEngine')
+  savedSearchEngine[$data] = 'Tu consulta {{query}} ;)'
+
+  setStorage('searchsEngine', savedSearchEngine)
+  loadSearchEngine()
+  $('#new-search-engine').value = ''
+}
+
 addEvent($('#search'), 'submit', searchQuery)
+addEvent($('#add-search-engine'), 'click', saveNewSearchEngine)
+
 updateInputSearch()

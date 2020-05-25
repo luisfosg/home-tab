@@ -31,6 +31,8 @@ export const setInitialValues = () => {
   const $textOwnBg = $('#text-own-bg')
   const $themeBgConfig = $('#theme-bg-config')
 
+  $('#new-search-engine').value = ''
+
   ownBg ? $textOwnBg.textContent = 'Ya tienes tu propia Imagen: ' : $textOwnBg.textContent = 'Subir mi propia imagen: '
   ownBg ? $ownBg.classList.add('hidden') : $ownBg.classList.remove('hidden')
   ownBg ? $themeBgConfig.classList.add('hidden') : $themeBgConfig.classList.remove('hidden')
