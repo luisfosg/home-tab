@@ -1,29 +1,13 @@
 <!DOCTYPE html>
-<html lang="es" class="text-[14px] 2xl:text-[15px]">
-
-  <pug src="./src/view/head.pug"></pug>
-
-  <body id="wallpaper" class="w-screen overflow-hidden bg-slate-700 text-slate-300">
-    <div class="flex flex-col items-center justify-center w-screen h-screen bg-gray-800/80">
-
-      <pug src="./src/view/menu.pug"></pug>
-
-      <pug src="./src/view/search.pug"></pug>
-
-    </div>
-
-    <!-- MODAL Config -->
-    <div id="settings" class="absolute top-0 left-0 flex items-center justify-center invisible w-screen h-screen bg-slate-900/40 backdrop-blur-sm">
-
-      <div class="relative bg-slate-800/80 w-11/12 lg:w-auto min-w-[50%] h-[80%] rounded-xl transition-all">
-
-        <pug src="./src/view/modal/header.pug"></pug>
-        <pug src="./src/view/modal/content.pug"></pug>
-        <pug src="./src/view/modal/footer.pug"></pug>
-
-      </div>
-
-    </div>
-
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/src/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vite App</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>
