@@ -1,10 +1,21 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 
-// https://vitejs.dev/config/
+import { resolve as resolvePath } from 'path'
+
+const resolve = {
+  alias: {
+    '#': resolvePath(__dirname, './'),
+    '@': resolvePath(__dirname, './src')
+  }
+}
+
 export default defineConfig({
-  plugins: [react()],
+  plugins: [
+    react()
+  ],
   css: {
     postcss: './postcss.config.js'
-  }
+  },
+  resolve
 })
