@@ -1,7 +1,9 @@
+import Menu from '@/components/Menu'
+
 const View = () => {
   return (
-    <div>
-      Este es el View
+    <div class='flex flex-col items-center justify-center w-full h-full bg-gray-800/80'>
+      <Menu />
     </div>
   )
 }
