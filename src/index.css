@@ -1,3 +1,38 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@tailwind variants;
+
+@layer base {
+  * {
+    @apply outline-none;
+  }
+
+  *::selection {
+    @apply text-white bg-slate-500;
+  }
+
+  input:-webkit-autofill,
+  input:-webkit-autofill:hover,
+  input:-webkit-autofill:focus,
+  input:-webkit-autofill:active  {
+    -webkit-text-fill-color: rgb(203 213 225 / var(--tw-text-opacity));
+    -webkit-box-shadow: 0 0 0px 1000px rgb(75 85 99) inset;
+    caret-color: rgb(203 213 225 / var(--tw-text-opacity));
+    border-radius: 0.3rem;
+  }
+}
+
+@layer utilities {
+  .scrollbar-color {
+    scrollbar-gutter: stable;
+  }
+
+  .scrollbar-color::-webkit-scrollbar {
+    @apply w-2 rounded-lg bg-slate-600;
+  }
+
+  .scrollbar-color::-webkit-scrollbar-thumb {
+    @apply rounded-lg bg-slate-900;
+  }
+}
