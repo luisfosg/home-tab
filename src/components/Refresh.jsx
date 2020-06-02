@@ -9,7 +9,6 @@ const Refresh = () => {
   const { getNewWallpaper } = useBackground()
 
   const handleClick = () => {
-    console.log('Hola')
     deleteStorage('time')
     getNewWallpaper()
   }
