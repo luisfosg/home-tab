@@ -1,9 +1,6 @@
-import ButtonMenu from '@/components/ButtonMenu'
-
 import Refresh from '@/components/Refresh'
 import Pin from '@/components/Pin'
-
-import Settings from '@icons/Settings'
+import OpenSettings from '@/components/OpenSettings'
 
 const Menu = () => {
   return (
@@ -12,10 +9,7 @@ const Menu = () => {
 
         <Refresh />
         <Pin />
-
-        <ButtonMenu>
-          <Settings />
-        </ButtonMenu>
+        <OpenSettings />
 
       </section>
     </header>
