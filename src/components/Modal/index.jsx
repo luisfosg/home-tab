@@ -1,4 +1,6 @@
 import Header from '@/components/Modal/Header'
+import Content from '@/components/Modal/Content'
+import Footer from '@/components/Modal/Footer'
 
 const Settings = () => {
   return (
@@ -6,11 +8,8 @@ const Settings = () => {
 
       <div className='relative bg-slate-800/80 w-11/12 lg:w-auto min-w-[50%] h-[80%] rounded-xl transition-all'>
         <Header />
-
-        <div className='flex flex-col items-center justify-center w-full h-4/5'>
-          <strong>En Desarrollo: Nueva Versión con ReactJS</strong>
-        </div>
-
+        <Content />
+        <Footer />
       </div>
 
     </div>

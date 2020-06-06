@@ -36,3 +36,9 @@
     @apply rounded-lg bg-slate-900;
   }
 }
+
+@layer components {
+  .content-settings {
+    height: calc(100% - 2.5rem - 4rem);
+  }
+}
