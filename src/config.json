@@ -13,7 +13,7 @@
   "defaultBg": {
     "urls":
     {
-      "regular":"// is empty config, update in functions/bg :("
+      "regular": "/assets/default.jpg"
     }
   }
 }

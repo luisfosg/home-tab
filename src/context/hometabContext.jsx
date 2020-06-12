@@ -1,4 +1,4 @@
-import { createContext, useState } from 'react'
+import { createContext, useState, useEffect } from 'react'
 
 import { getStorage } from '@/services/storage'
 
@@ -9,19 +9,23 @@ const Context = createContext({
   setIsPinned: () => {},
   openSettings: false,
   setOpenSettings: () => {},
-  getNewWallpaper: () => {}
+  updateWallpaper: () => {}
 })
 
 export const HomeTabContextProvider = ({ children }) => {
-  const { getNewWallpaper } = useBackground()
+  const { updateWallpaper } = useBackground()
   const [openSettings, setOpenSettings] = useState(false)
 
   const [isPinned, setIsPinned] = useState(() => {
     return getStorage('pin') || false
   })
 
+  useEffect(() => {
+    updateWallpaper()
+  }, [])
+
   return (
-    <Context.Provider value={{ isPinned, setIsPinned, openSettings, setOpenSettings, getNewWallpaper }}>
+    <Context.Provider value={{ isPinned, setIsPinned, openSettings, setOpenSettings, updateWallpaper }}>
       {children}
     </Context.Provider>
   )
