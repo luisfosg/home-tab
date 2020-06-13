@@ -7,7 +7,7 @@ const useBackground = () => {
   const [bg, setBg] = useState({ res: defaultBg })
 
   useEffect(() => {
-    const $wallpaper = document.getElementById('wallpaper')
+    const $wallpaper = document.body
     const URL = bg.img || bg.res.urls.regular.replace('1080', '1440')
 
     $wallpaper.style = `
@@ -50,7 +50,7 @@ const useBackground = () => {
 
   const updateWallpaper = async () => {
     const existBg = verifyBg()
-    if (typeof existBg === 'object') return
+    if (!existBg) return
 
     let newWallpaper
 
