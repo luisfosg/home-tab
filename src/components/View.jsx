@@ -4,7 +4,7 @@ import HomeTabContext from '@/context/hometabContext'
 
 import Menu from '@/components/Menu'
 import SearchForm from '@/components/SearchForm'
-import Settings from '@/components/Modal'
+import Settings from '@/components/Settings'
 
 const View = () => {
   const { openSettings } = useContext(HomeTabContext)

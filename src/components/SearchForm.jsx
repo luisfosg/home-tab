@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-import { getStorage, setStorage } from '@/services/storage'
+import { getStorage } from '@/services/storage'
 import { urlify } from '@/services/util'
 import { defaultSearchEngine, searchEngine } from '@/config.json'
 
@@ -13,19 +13,17 @@ const SearchForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    const storageSearchEngine = getStorage('defaultSearchEngine')
-    if (!storageSearchEngine) setStorage('defaultSearchEngine', defaultSearchEngine)
+    const usedSearchEngine = getStorage('defaultSearchEngine') || defaultSearchEngine
+    const useSearchEngine = getStorage('searchsEngine') || searchEngine
 
     const query = search.trim()
     const [isURL, newURL] = urlify(query)
 
-    const savedSearchEngine = getStorage('searchsEngine')
-    const useSearchEngine = savedSearchEngine || searchEngine
+    const redirectTo = isURL
+      ? newURL
+      : useSearchEngine[usedSearchEngine].replace('{query}', query)
 
-    isURL
-      ? window.location.href = newURL
-      : window.location.href = useSearchEngine[storageSearchEngine || defaultSearchEngine].replace('{{query}}', query)
-
+    window.location.href = redirectTo
     setSearch('')
   }
 

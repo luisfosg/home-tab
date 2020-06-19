@@ -1,6 +1,6 @@
-import Header from '@/components/Modal/Header'
-import Content from '@/components/Modal/Content'
-import Footer from '@/components/Modal/Footer'
+import Header from '@/components/Settings/Header'
+import Content from '@/components/Settings/Content'
+import Footer from '@/components/Settings/Footer'
 
 const Settings = () => {
   return (
