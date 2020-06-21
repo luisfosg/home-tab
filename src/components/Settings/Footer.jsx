@@ -6,7 +6,7 @@ const FooterModal = () => {
       </div>
       <div>
 
-        {/*  <button className='flex items-center justify-center px-3 py-2 text-lg font-semibold rounded-lg bg-slate-600 hover:bg-slate-800 disabled:hover:bg-slate-600'>Guardar Cambios</button> */}
+        <button className='flex items-center justify-center px-3 py-2 text-lg font-semibold rounded-lg bg-slate-600 hover:bg-slate-800 disabled:hover:bg-slate-600'>Guardar Cambios</button>
 
       </div>
     </footer>
