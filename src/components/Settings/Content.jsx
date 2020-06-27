@@ -10,10 +10,6 @@ const ContentModal = () => {
         <Title>Tema del Fondo</Title>
         <Input />
       </Container>
-
-      <div className='flex flex-col items-center justify-center w-full h-full'>
-        <strong className='text-center'>En Desarrollo: Nueva Versión con ReactJS</strong>
-      </div>
     </div>
   )
 }
