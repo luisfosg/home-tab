@@ -3,7 +3,7 @@ import { useContext } from 'react'
 import { deleteStorage } from '@/services/storage'
 import HomeTabContext from '@/context/hometabContext'
 
-import ButtonMenu from '@/components/ButtonMenu'
+import ButtonMenu from '@/components/Settings/ButtonMenu'
 
 import RefreshIcon from '@icons/Refresh'
 

@@ -10,7 +10,7 @@ const Settings = () => {
 
       <div className='relative bg-slate-800/80 w-11/12 lg:w-auto min-w-[50%] h-[80%] rounded-xl transition-all'>
         <Header />
-        <Alert title='En Desarrollo' message='Nueva Versión con ReactJS' time={3000} />
+        <Alert title='En Desarrollo' message='Nueva Versión con ReactJS' time={2000} />
         <Content />
         <Footer />
       </div>

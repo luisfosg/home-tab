@@ -2,7 +2,7 @@ import { useContext } from 'react'
 
 import HomeTabContext from '@/context/hometabContext'
 
-import ButtonMenu from '@/components/ButtonMenu'
+import ButtonMenu from '@/components/Settings/ButtonMenu'
 
 import Settings from '@icons/Settings'
 

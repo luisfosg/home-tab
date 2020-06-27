@@ -16,7 +16,7 @@ const Alert = ({ title, message, time }) => {
 
   if (!show) return null
   return (
-    <div className='absolute z-10 w-full px-4 py-3 text-gray-900 border-t-4 rounded-b top-10 bg-slate-500 border-slate-600' role='alert'>
+    <div className='absolute z-10 w-full px-4 py-3 text-gray-900 border-t-4 rounded-b top-10 bg-slate-500/90 border-slate-600 backdrop-blur-md' role='alert'>
       <div className='flex items-center justify-center'>
         <div className='py-1'>
           <AlertIcon />

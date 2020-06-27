@@ -3,7 +3,7 @@ import { useContext } from 'react'
 import { getStorage, setStorage } from '@/services/storage'
 import HomeTabContext from '@/context/hometabContext'
 
-import ButtonMenu from '@/components/ButtonMenu'
+import ButtonMenu from '@/components/Settings/ButtonMenu'
 
 import PinActive from '@icons/PinActive'
 import PinDeactive from '@icons/PinDeactive'
