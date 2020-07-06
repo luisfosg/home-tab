@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react'
 
 import { setStorage, getStorage } from '@/services/storage'
-import { APIBG, maxTime, defaultBg, defaultQuery } from '@/config.json'
+import { getAPI } from '@/services/util'
+import { maxTime, defaultBg } from '@/config.json'
 
 const useBackground = () => {
   const [bg, setBg] = useState({ res: defaultBg })
@@ -15,19 +16,6 @@ const useBackground = () => {
       background-size: cover;
     `
   }, [bg])
-
-  const getQuery = () => {
-    const queryStorage = getStorage('query')
-    if (!queryStorage) setStorage('query', defaultQuery)
-
-    return queryStorage || defaultQuery
-  }
-
-  const getAPI = (newQuery) => {
-    const query = getQuery()
-
-    return APIBG.replace('{query}', newQuery || query)
-  }
 
   const verifyBg = () => {
     const ownBG = getStorage('ownBg')

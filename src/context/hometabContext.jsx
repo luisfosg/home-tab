@@ -27,7 +27,8 @@ export const HomeTabContextProvider = ({ children }) => {
 
   useEffect(() => {
     updateWallpaper()
-  }, [])
+    if (updateSettings) setUpdateSettings(false)
+  }, [updateSettings])
 
   const VALUES = {
     isPinned,
