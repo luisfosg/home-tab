@@ -3,6 +3,7 @@ import { createContext, useState, useEffect } from 'react'
 import { getStorage } from '@/services/storage'
 
 import useBackground from '@/hooks/useBackground'
+import useUpdate from '@/hooks/useUpdate'
 
 const Context = createContext({
   isPinned: false,
@@ -13,11 +14,14 @@ const Context = createContext({
   updateSettings: false,
   setUpdateSettings: () => {},
 
+  msgAlert: '',
+  setMsgAlert: () => {},
+
   updateWallpaper: () => {}
 })
 
 export const HomeTabContextProvider = ({ children }) => {
-  const [updateSettings, setUpdateSettings] = useState(false)
+  const { updateSettings, setUpdateSettings, msgAlert, setMsgAlert } = useUpdate()
   const [openSettings, setOpenSettings] = useState(false)
   const { updateWallpaper } = useBackground()
 
@@ -27,16 +31,20 @@ export const HomeTabContextProvider = ({ children }) => {
 
   useEffect(() => {
     updateWallpaper()
-    if (updateSettings) setUpdateSettings(false)
-  }, [updateSettings])
+  }, [])
 
   const VALUES = {
     isPinned,
     setIsPinned,
+
     openSettings,
     setOpenSettings,
     updateSettings,
     setUpdateSettings,
+
+    msgAlert,
+    setMsgAlert,
+
     updateWallpaper
   }
 

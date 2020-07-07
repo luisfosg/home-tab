@@ -1,22 +1,18 @@
-import { useState, useEffect } from 'react'
-
 import AlertIcon from '@icons/Alert'
 
-const Alert = ({ title, message, time }) => {
-  const [show, setShow] = useState(true)
+const STYLES = {
+  default: 'bg-slate-500/90 border-slate-600',
+  success: 'bg-green-500/90 border-green-600',
+  error: 'bg-red-500/90 border-red-600'
+}
 
-  useEffect(() => {
-    if (time) {
-      const timer = setTimeout(() => {
-        setShow(false)
-      }, time)
-      return () => clearTimeout(timer)
-    }
-  }, [time])
+const Alert = ({ title, message, type }) => {
+  const style = STYLES[type] || STYLES.default
 
-  if (!show) return null
+  const DIV_STYLE = `absolute z-10 w-full px-4 py-3 text-gray-900 border-t-4 rounded-b top-10 backdrop-blur-md ${style}`
+
   return (
-    <div className='absolute z-10 w-full px-4 py-3 text-gray-900 border-t-4 rounded-b top-10 bg-slate-500/90 border-slate-600 backdrop-blur-md' role='alert'>
+    <div className={DIV_STYLE} role='alert'>
       <div className='flex items-center justify-center'>
         <div className='py-1'>
           <AlertIcon />

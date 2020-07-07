@@ -9,7 +9,7 @@ import Title from '@/components/TitleSetting'
 import Input from '@/components/Settings/InputSetting'
 
 const ChangeQuery = () => {
-  const { updateSettings, updateWallpaper } = useContext(HomeTabContext)
+  const { updateSettings, updateWallpaper, setMsgAlert } = useContext(HomeTabContext)
   const [query, setQuery] = useState('')
 
   useEffect(() => {
@@ -30,7 +30,13 @@ const ChangeQuery = () => {
 
     const data = await window.fetch(API.replace('{{api}}', import.meta.env.VITE_UNSPLASH_KEY))
     const newWallpaper = await data.json()
-    if (newWallpaper.errors) return console.error('Error:', newWallpaper.errors)
+    if (newWallpaper.errors) {
+      return setMsgAlert({
+        title: 'Error',
+        message: 'No se encontro ningún resultado del tema que buscas',
+        type: 'error'
+      })
+    }
 
     setStorage('wallpaper', newWallpaper)
     setStorage('time', Date.now())
