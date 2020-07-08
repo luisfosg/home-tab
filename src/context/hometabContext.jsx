@@ -42,10 +42,12 @@ export const HomeTabContextProvider = ({ children }) => {
   }, [settings])
 
   useEffect(() => {
-    if (!openSettings) {
-      settings.clearSettings()
-    }
+    if (!openSettings) settings.clearSettings()
   }, [openSettings])
+
+  useEffect(() => {
+    updateWallpaper()
+  }, [])
 
   const VALUES = {
     isPinned,

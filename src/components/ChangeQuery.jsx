@@ -31,24 +31,29 @@ const ChangeQuery = () => {
   }
 
   const handleSave = async () => {
-    const API = getAPI(query)
+    const oldQuery = getQuery()
 
-    const data = await window.fetch(API.replace('{{api}}', import.meta.env.VITE_UNSPLASH_KEY))
-    const newWallpaper = await data.json()
-    if (newWallpaper.errors) {
-      settings.updateSetting({
-        name: 'query',
-        error: true
-      })
+    if (oldQuery !== query) {
+      const API = getAPI(query)
 
-      return setMsgAlert({
-        title: 'Error',
-        message: 'No se encontro ningún resultado del tema que buscas',
-        type: 'error'
-      })
+      const data = await window.fetch(API.replace('{{api}}', import.meta.env.VITE_UNSPLASH_KEY))
+      const newWallpaper = await data.json()
+      if (newWallpaper.errors) {
+        settings.updateSetting({
+          name: 'query',
+          error: true
+        })
+
+        return setMsgAlert({
+          title: 'Error',
+          message: 'No se encontro ningún resultado del tema que buscas',
+          type: 'error'
+        })
+      }
+
+      setStorage('wallpaper', newWallpaper)
     }
 
-    setStorage('wallpaper', newWallpaper)
     setStorage('time', Date.now())
     setStorage('query', query)
 
