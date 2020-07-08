@@ -1,8 +1,6 @@
-/* eslint-disable no-var */
 import { useState, useEffect } from 'react'
 
-const useUpdateSettings = () => {
-  const [updateSettings, setUpdateSettings] = useState(false)
+const useAlert = () => {
   const [msgAlert, setMsg] = useState({
     title: '',
     message: '',
@@ -10,12 +8,10 @@ const useUpdateSettings = () => {
   })
 
   useEffect(() => {
-    if (updateSettings) setUpdateSettings(false)
-  }, [updateSettings])
+    let timeout
 
-  useEffect(() => {
     if (msgAlert) {
-      var timeout = setTimeout(() => setMsg({
+      timeout = setTimeout(() => setMsg({
         title: '',
         message: '',
         type: ''
@@ -36,11 +32,9 @@ const useUpdateSettings = () => {
   }
 
   return {
-    updateSettings,
-    setUpdateSettings,
     msgAlert,
     setMsgAlert
   }
 }
 
-export default useUpdateSettings
+export default useAlert

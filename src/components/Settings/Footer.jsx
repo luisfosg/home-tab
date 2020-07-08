@@ -1,12 +1,13 @@
 import { useContext } from 'react'
 
 import HomeTabContext from '@/context/hometabContext'
+import Loading from '@icons/Loading'
 
 const FooterModal = () => {
-  const { setUpdateSettings } = useContext(HomeTabContext)
+  const { settings } = useContext(HomeTabContext)
 
   const handleSave = () => {
-    setUpdateSettings(true)
+    settings.setUpdateSettings(true)
   }
 
   return (
@@ -16,7 +17,11 @@ const FooterModal = () => {
       </div>
       <div>
 
-        <button onClick={handleSave} className='flex items-center justify-center px-3 py-2 text-lg font-semibold rounded-lg bg-slate-600 hover:bg-slate-800 disabled:hover:bg-slate-600'>Guardar Cambios</button>
+        <button onClick={handleSave} className='flex items-center justify-center px-3 py-2 text-lg font-semibold rounded-lg bg-slate-600 hover:bg-slate-800 disabled:hover:bg-slate-600'>
+          {
+            settings.updateSettings ? <Loading /> : 'Guardar Cambios'
+          }
+        </button>
 
       </div>
     </footer>

@@ -3,16 +3,16 @@ import { createContext, useState, useEffect } from 'react'
 import { getStorage } from '@/services/storage'
 
 import useBackground from '@/hooks/useBackground'
-import useUpdate from '@/hooks/useUpdate'
+import useUpdate from '@/hooks/useAlert'
+import useSettings from '@/hooks/useSettings'
 
 const Context = createContext({
   isPinned: false,
   setIsPinned: () => {},
 
+  settings: {},
   openSettings: false,
   setOpenSettings: () => {},
-  updateSettings: false,
-  setUpdateSettings: () => {},
 
   msgAlert: '',
   setMsgAlert: () => {},
@@ -21,7 +21,9 @@ const Context = createContext({
 })
 
 export const HomeTabContextProvider = ({ children }) => {
-  const { updateSettings, setUpdateSettings, msgAlert, setMsgAlert } = useUpdate()
+  const settings = useSettings()
+  const { msgAlert, setMsgAlert } = useUpdate()
+
   const [openSettings, setOpenSettings] = useState(false)
   const { updateWallpaper } = useBackground()
 
@@ -30,17 +32,28 @@ export const HomeTabContextProvider = ({ children }) => {
   })
 
   useEffect(() => {
-    updateWallpaper()
-  }, [])
+    const isNotLoading = settings.settings.filter(setting => setting.success)
+    if (isNotLoading.length === 0) return
+
+    if (isNotLoading.length === settings.settings.length) {
+      updateWallpaper()
+      setOpenSettings(false)
+    }
+  }, [settings])
+
+  useEffect(() => {
+    if (!openSettings) {
+      settings.clearSettings()
+    }
+  }, [openSettings])
 
   const VALUES = {
     isPinned,
     setIsPinned,
 
+    settings,
     openSettings,
     setOpenSettings,
-    updateSettings,
-    setUpdateSettings,
 
     msgAlert,
     setMsgAlert,

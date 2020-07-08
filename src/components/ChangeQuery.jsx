@@ -9,17 +9,22 @@ import Title from '@/components/TitleSetting'
 import Input from '@/components/Settings/InputSetting'
 
 const ChangeQuery = () => {
-  const { updateSettings, updateWallpaper, setMsgAlert } = useContext(HomeTabContext)
+  const { setMsgAlert, settings } = useContext(HomeTabContext)
   const [query, setQuery] = useState('')
 
   useEffect(() => {
+    settings.addSetting({
+      name: 'query',
+      progress: true
+    })
+
     const query = getQuery()
     setQuery(query)
   }, [])
 
   useEffect(() => {
-    if (updateSettings) handleSave()
-  }, [updateSettings])
+    if (settings.updateSettings) handleSave()
+  }, [settings.updateSettings])
 
   const handleChange = (e) => {
     setQuery(e.target.value)
@@ -31,6 +36,11 @@ const ChangeQuery = () => {
     const data = await window.fetch(API.replace('{{api}}', import.meta.env.VITE_UNSPLASH_KEY))
     const newWallpaper = await data.json()
     if (newWallpaper.errors) {
+      settings.updateSetting({
+        name: 'query',
+        error: true
+      })
+
       return setMsgAlert({
         title: 'Error',
         message: 'No se encontro ningún resultado del tema que buscas',
@@ -41,7 +51,11 @@ const ChangeQuery = () => {
     setStorage('wallpaper', newWallpaper)
     setStorage('time', Date.now())
     setStorage('query', query)
-    updateWallpaper()
+
+    settings.updateSetting({
+      name: 'query',
+      success: true
+    })
   }
 
   return (
