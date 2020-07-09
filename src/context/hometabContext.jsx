@@ -6,6 +6,8 @@ import useBackground from '@/hooks/useBackground'
 import useUpdate from '@/hooks/useAlert'
 import useSettings from '@/hooks/useSettings'
 
+import { pin } from '@/config.json'
+
 const Context = createContext({
   isPinned: false,
   setIsPinned: () => {},
@@ -28,7 +30,7 @@ export const HomeTabContextProvider = ({ children }) => {
   const { updateWallpaper } = useBackground()
 
   const [isPinned, setIsPinned] = useState(() => {
-    return getStorage('pin') || false
+    return getStorage('pin') || pin
   })
 
   useEffect(() => {

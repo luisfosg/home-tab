@@ -33,7 +33,7 @@ const ChangeQuery = () => {
   const handleSave = async () => {
     const oldQuery = getQuery()
 
-    if (oldQuery !== query) {
+    if (oldQuery !== query && query !== '') {
       const API = getAPI(query)
 
       const data = await window.fetch(API.replace('{{api}}', import.meta.env.VITE_UNSPLASH_KEY))
@@ -52,10 +52,9 @@ const ChangeQuery = () => {
       }
 
       setStorage('wallpaper', newWallpaper)
+      setStorage('time', Date.now())
+      setStorage('query', query)
     }
-
-    setStorage('time', Date.now())
-    setStorage('query', query)
 
     settings.updateSetting({
       name: 'query',
