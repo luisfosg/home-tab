@@ -5,7 +5,7 @@ import { setStorage } from '@/services/storage'
 import { getQuery, getAPI } from '@/services/util'
 
 import Container from '@/components/Settings/ContainerSetting'
-import Title from '@/components/TitleSetting'
+import Title from '@/components/Settings/TitleSetting'
 import Input from '@/components/Settings/InputSetting'
 
 const ChangeQuery = () => {

@@ -8,7 +8,7 @@ import ButtonMenu from '@/components/Settings/ButtonMenu'
 import RefreshIcon from '@icons/Refresh'
 
 const Refresh = () => {
-  const { isPinned, updateWallpaper } = useContext(HomeTabContext)
+  const { isPinned, isOwnImg, updateWallpaper } = useContext(HomeTabContext)
 
   const handleClick = () => {
     deleteStorage('time')
@@ -16,6 +16,7 @@ const Refresh = () => {
   }
 
   if (isPinned) return null
+  if (isOwnImg) return null
 
   return (
     <ButtonMenu handleClick={handleClick}>

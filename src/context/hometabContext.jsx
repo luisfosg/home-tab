@@ -12,6 +12,9 @@ const Context = createContext({
   isPinned: false,
   setIsPinned: () => {},
 
+  isOwnImg: false,
+  setIsOwnImg: () => {},
+
   settings: {},
   openSettings: false,
   setOpenSettings: () => {},
@@ -29,6 +32,9 @@ export const HomeTabContextProvider = ({ children }) => {
   const [openSettings, setOpenSettings] = useState(false)
   const { updateWallpaper } = useBackground()
 
+  const [isOwnImg, setIsOwnImg] = useState(() => {
+    return getStorage('ownBg') || false
+  })
   const [isPinned, setIsPinned] = useState(() => {
     return getStorage('pin') || pin
   })
@@ -54,6 +60,9 @@ export const HomeTabContextProvider = ({ children }) => {
   const VALUES = {
     isPinned,
     setIsPinned,
+
+    isOwnImg,
+    setIsOwnImg,
 
     settings,
     openSettings,
