@@ -1,33 +1,27 @@
 import { useState, useEffect } from 'react'
 
 const useSettings = () => {
-  const [settings, setSettings] = useState([])
+  const [settings, setSettings] = useState({})
   const [updateSettings, setUpdateSettings] = useState(false)
 
   useEffect(() => {
-    if (!updateSettings) return
+    if (!updateSettings || Object.values(settings).length === 0) return
 
-    const isNotLoading = settings.filter(setting => setting.success || setting.error)
-    if (isNotLoading.length === settings.length) setUpdateSettings(false)
+    const isNotLoading = Object.values(settings).every(setting => !setting.progress)
+    if (isNotLoading) setUpdateSettings(false)
   }, [settings])
 
   const clearSettings = () => {
-    setSettings([])
-  }
-
-  const addSetting = (setting) => {
-    setSettings([...settings, setting])
+    setSettings({})
   }
 
   const updateSetting = (setting) => {
-    const newSettings = settings.map(s => {
-      if (s.name === setting.name) {
-        return setting
+    setSettings((last) => {
+      return {
+        ...last,
+        [setting.name]: setting
       }
-      return s
     })
-
-    setSettings(newSettings)
   }
 
   return {
@@ -36,7 +30,6 @@ const useSettings = () => {
     updateSettings,
     setUpdateSettings,
 
-    addSetting,
     updateSetting,
     clearSettings
   }

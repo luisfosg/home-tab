@@ -13,7 +13,7 @@ const ChangeQuery = () => {
   const [query, setQuery] = useState('')
 
   useEffect(() => {
-    settings.addSetting({
+    settings.updateSetting({
       name: 'query',
       progress: true
     })

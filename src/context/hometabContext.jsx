@@ -33,20 +33,21 @@ export const HomeTabContextProvider = ({ children }) => {
   const { updateWallpaper } = useBackground()
 
   const [isOwnImg, setIsOwnImg] = useState(() => {
-    return getStorage('ownBg') || false
+    return !!getStorage('ownBg')
   })
   const [isPinned, setIsPinned] = useState(() => {
     return getStorage('pin') || pin
   })
 
   useEffect(() => {
-    const isNotLoading = settings.settings.filter(setting => setting.success)
-    if (isNotLoading.length === 0) return
+    if (Object.values(settings.settings).length === 0) return
 
-    if (isNotLoading.length === settings.settings.length) {
-      updateWallpaper()
-      setOpenSettings(false)
-    }
+    const isSuccess = Object.values(settings.settings).every(setting => setting.success)
+    if (!isSuccess) return
+
+    updateWallpaper()
+    setIsOwnImg(!!getStorage('ownBg'))
+    setOpenSettings(false)
   }, [settings])
 
   useEffect(() => {
