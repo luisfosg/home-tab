@@ -37,8 +37,8 @@ const useBackground = () => {
   }
 
   const updateWallpaper = async () => {
-    const existBg = verifyBg()
-    if (!existBg) return
+    const needBg = verifyBg()
+    if (!needBg) return
 
     let newWallpaper
 

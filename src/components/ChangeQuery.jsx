@@ -9,7 +9,7 @@ import Title from '@/components/Settings/TitleSetting'
 import Input from '@/components/Settings/InputSetting'
 
 const ChangeQuery = () => {
-  const { setMsgAlert, settings } = useContext(HomeTabContext)
+  const { isOwnImg, setMsgAlert, settings } = useContext(HomeTabContext)
   const [query, setQuery] = useState('')
 
   useEffect(() => {
@@ -61,6 +61,8 @@ const ChangeQuery = () => {
       success: true
     })
   }
+
+  if (isOwnImg) return null
 
   return (
     <Container>

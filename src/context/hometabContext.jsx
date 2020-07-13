@@ -28,9 +28,9 @@ const Context = createContext({
 export const HomeTabContextProvider = ({ children }) => {
   const settings = useSettings()
   const { msgAlert, setMsgAlert } = useUpdate()
+  const { updateWallpaper } = useBackground()
 
   const [openSettings, setOpenSettings] = useState(false)
-  const { updateWallpaper } = useBackground()
 
   const [isOwnImg, setIsOwnImg] = useState(() => {
     return !!getStorage('ownBg')
@@ -46,12 +46,14 @@ export const HomeTabContextProvider = ({ children }) => {
     if (!isSuccess) return
 
     updateWallpaper()
-    setIsOwnImg(!!getStorage('ownBg'))
     setOpenSettings(false)
-  }, [settings])
+  }, [settings.settings])
 
   useEffect(() => {
-    if (!openSettings) settings.clearSettings()
+    if (!openSettings) {
+      settings.clearSettings()
+      setIsOwnImg(!!getStorage('ownBg'))
+    }
   }, [openSettings])
 
   useEffect(() => {
