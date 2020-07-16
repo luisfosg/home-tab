@@ -29,11 +29,11 @@
   }
 
   .scrollbar-color::-webkit-scrollbar {
-    @apply w-2 rounded-lg bg-slate-600;
+    @apply w-2 rounded-lg bg-slate-700;
   }
 
   .scrollbar-color::-webkit-scrollbar-thumb {
-    @apply rounded-lg bg-slate-900;
+    @apply rounded-lg bg-slate-900 hover:bg-gray-900/80;
   }
 }
 

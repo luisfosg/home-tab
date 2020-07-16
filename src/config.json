@@ -4,7 +4,7 @@
   "maxTime": 600000,
   "pin": false,
   "APIBG": "https://api.unsplash.com/photos/random/?client_id={{api}}&orientation=landscape&&query={{query}}",
-  "defaultSearchEngine": "DuckDuckGo",
+  "defaultSearchEngine": "Google",
   "searchEngine": {
     "Google": "https://google.com/search?q={query}",
     "DuckDuckGo": "https://duckduckgo.com/?q={query}",
