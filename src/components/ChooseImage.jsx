@@ -62,9 +62,9 @@ const ChooseImage = () => {
 
   if (isOwnImg) {
     return (
-      <Container>
+      <Container center>
         <Title>Imagen Seleccionada</Title>
-        <button onClick={handleDelete} className='mt-4 p-2 px-4 ml-2 md:mt-0 rounded-lg bg-red-500/50 hover:bg-red-600'>Eliminar</button>
+        <button onClick={handleDelete} className='mt-4 p-2 px-4 ml-2 rounded-lg bg-red-500/50 hover:bg-red-600'>Eliminar</button>
       </Container>
     )
   }
