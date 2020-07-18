@@ -1,3 +1,5 @@
+import { searchEngine } from '@/config.json'
+
 const STORAGE_VALUES = {
   QUERY: 'query',
   WALLPAPER: 'wallpaper',
@@ -11,6 +13,20 @@ const STORAGE_VALUES = {
 
 const sendError = () => {
   console.error('Storage name not found')
+}
+
+export const setStorageSearch = (nameSelect, value) => {
+  const [name, select] = nameSelect.split('.')
+
+  for (const key in STORAGE_VALUES) {
+    if (STORAGE_VALUES[key] === name) {
+      const data = getStorage(name) || searchEngine
+      data[select] = value
+
+      setStorage(name, data)
+      return
+    }
+  }
 }
 
 export const setStorage = (name, value) => {
