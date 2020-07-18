@@ -50,6 +50,20 @@ export const getStorage = (name) => {
   sendError()
 }
 
+export const deleteStorageSearch = (nameSelect) => {
+  const [name, select] = nameSelect.split('.')
+
+  for (const key in STORAGE_VALUES) {
+    if (STORAGE_VALUES[key] === name) {
+      const data = getStorage(name) || searchEngine
+      delete data[select]
+
+      setStorage(name, data)
+      return
+    }
+  }
+}
+
 export const deleteStorage = (name) => {
   for (const key in STORAGE_VALUES) {
     if (STORAGE_VALUES[key] === name) {
