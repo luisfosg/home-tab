@@ -10,9 +10,10 @@ const InputSetting = ({
   type = 'text',
   value = '',
   onChange,
+  extraClass = '',
   ...props
 }) => {
-  const inputClass = TYPES[type] || TYPES.text
+  const inputClass = `${TYPES[type] || TYPES.text} ${extraClass}`.trim()
   type = TYPES_TEXT.includes(type) ? 'text' : type
 
   if (!onChange) return <input defaultValue={value} type={type} className={inputClass} {...props} />

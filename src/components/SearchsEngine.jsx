@@ -46,7 +46,7 @@ const SearchsEngine = () => {
   }
 
   return (
-    <Container center>
+    <Container center border='none'>
       <Title>Motor de Búsqueda</Title>
       <div className='w-full'>
         {
