@@ -19,7 +19,7 @@ const FooterModal = () => {
       </div>
       <div>
 
-        <button onClick={handleSave} disabled={isUpdated} className='flex items-center justify-center px-3 py-2 text-lg font-semibold rounded-lg bg-slate-600 hover:bg-slate-800 disabled:bg-slate-400 disabled:hover:bg-slate-600'>
+        <button onClick={handleSave} disabled={isUpdated} className='flex items-center justify-center px-3 py-2 text-lg font-semibold rounded-lg bg-slate-600 hover:bg-slate-800 disabled:bg-slate-400 disabled:hover:bg-slate-600 disabled:pointer-events-none'>
           {
             isUpdated ? <Loading /> : 'Guardar Cambios'
           }

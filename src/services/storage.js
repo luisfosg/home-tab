@@ -15,6 +15,10 @@ const sendError = () => {
   console.error('Storage name not found')
 }
 
+export const deleteAllStorage = () => {
+  window.localStorage.clear()
+}
+
 export const setStorageSearch = (nameSelect, value) => {
   const [name, select] = nameSelect.split('.')
 
