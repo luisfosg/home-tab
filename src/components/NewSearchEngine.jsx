@@ -19,7 +19,7 @@ const NewSearchEngine = () => {
 
     setStorageSearch(
       `searchsEngine.${name.trim()}`,
-      'Agrega {query} a tu nuevo motor de busqueda :)'
+      'Agrega {query} a tu nuevo motor de búsqueda :)'
     )
 
     setName('')

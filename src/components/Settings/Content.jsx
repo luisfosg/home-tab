@@ -2,6 +2,7 @@ import ChangeQuery from '@/components/ChangeQuery'
 import ChooseImage from '@/components/ChooseImage'
 import SearchsEngine from '@/components/SearchsEngine'
 import NewSearchEngine from '@/components/NewSearchEngine'
+import ButtonReset from '@/components/ButtonReset'
 
 const ContentModal = () => {
   return (
@@ -11,6 +12,7 @@ const ContentModal = () => {
       <ChooseImage />
       <SearchsEngine />
       <NewSearchEngine />
+      <ButtonReset />
 
     </div>
   )
