@@ -12,6 +12,7 @@ const resolve = {
 }
 
 export default defineConfig({
+  publicDir: 'assets',
   plugins: [
     react()
   ],
