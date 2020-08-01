@@ -1,6 +1,6 @@
 import { useState, useEffect, useContext } from 'react'
 
-import HomeTabContext from '@/context/hometabContext'
+import StateContext from '@/context/stateContext'
 import { setStorageSearch, deleteStorageSearch } from '@/services/storage'
 import { capitalize } from '@/services/util'
 
@@ -8,7 +8,7 @@ import Input from '@/components/Settings/InputSetting'
 import Close from '@/components/Icons/Close'
 
 const SearchEngine = ({ name, url, select, handleChange }) => {
-  const { settings } = useContext(HomeTabContext)
+  const { settings } = useContext(StateContext)
   const [urlInput, setUrl] = useState(url)
   const [isDelete, setIsDelete] = useState(false)
 

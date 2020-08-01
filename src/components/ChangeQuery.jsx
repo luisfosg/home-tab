@@ -1,6 +1,7 @@
 import { useState, useEffect, useContext } from 'react'
 
 import HomeTabContext from '@/context/hometabContext'
+import StateContext from '@/context/stateContext'
 import { setStorage } from '@/services/storage'
 import { getQuery, getAPI } from '@/services/util'
 
@@ -9,7 +10,9 @@ import Title from '@/components/Settings/TitleSetting'
 import Input from '@/components/Settings/InputSetting'
 
 const ChangeQuery = () => {
-  const { isOwnImg, setMsgAlert, settings } = useContext(HomeTabContext)
+  const { isOwnImg, setMsgAlert } = useContext(HomeTabContext)
+  const { settings } = useContext(StateContext)
+
   const [query, setQuery] = useState('')
 
   useEffect(() => {

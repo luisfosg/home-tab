@@ -1,11 +1,11 @@
 import { useContext } from 'react'
 
-import HomeTabContext from '@/context/hometabContext'
+import StateContext from '@/context/stateContext'
 
 import Close from '@/components/Icons/Close'
 
 const HeaderSettings = () => {
-  const { settings, setOpenSettings } = useContext(HomeTabContext)
+  const { settings, setOpenSettings } = useContext(StateContext)
 
   const handleClose = () => {
     setOpenSettings(false)

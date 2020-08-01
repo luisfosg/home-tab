@@ -1,6 +1,6 @@
 import { useState, useEffect, useContext } from 'react'
 
-import HomeTabContext from '@/context/hometabContext'
+import StateContext from '@/context/stateContext'
 import { getStorage, setStorage } from '@/services/storage'
 
 import SearchEngine from '@/components/SearchEngine'
@@ -14,7 +14,7 @@ const SearchsEngine = () => {
   const storageSearchEngine = getStorage('defaultSearchEngine') || defaultSearchEngine
   const [selected, setSelected] = useState(storageSearchEngine)
 
-  const { settings } = useContext(HomeTabContext)
+  const { settings } = useContext(StateContext)
 
   useEffect(() => {
     settings.updateSetting({

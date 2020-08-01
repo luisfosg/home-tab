@@ -1,13 +1,13 @@
 import { useState, useEffect, useContext } from 'react'
 
-import HomeTabContext from '@/context/hometabContext'
+import StateContext from '@/context/stateContext'
 import { deleteAllStorage } from '@/services/storage'
 
 import Container from '@/components/Settings/ContainerSetting'
 import Title from '@/components/Settings/TitleSetting'
 
 const ButtonReset = () => {
-  const { settings } = useContext(HomeTabContext)
+  const { settings } = useContext(StateContext)
 
   const [clicked, setClicked] = useState(false)
 

@@ -1,10 +1,10 @@
 import { useContext } from 'react'
 
-import HomeTabContext from '@/context/hometabContext'
+import StateContext from '@/context/stateContext'
 import Loading from '@icons/Loading'
 
 const FooterModal = () => {
-  const { settings } = useContext(HomeTabContext)
+  const { settings } = useContext(StateContext)
 
   const handleSave = () => {
     settings.setUpdateSettings(true)

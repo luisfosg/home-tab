@@ -1,13 +1,13 @@
 import { useContext } from 'react'
 
-import HomeTabContext from '@/context/hometabContext'
+import StateContext from '@/context/stateContext'
 
 import ButtonMenu from '@/components/Settings/ButtonMenu'
 
 import Settings from '@icons/Settings'
 
 const OpenSettings = () => {
-  const { setOpenSettings } = useContext(HomeTabContext)
+  const { setOpenSettings } = useContext(StateContext)
 
   const handleClick = () => {
     setOpenSettings(true)

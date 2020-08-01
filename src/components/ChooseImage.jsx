@@ -1,6 +1,7 @@
 import { useState, useEffect, useContext } from 'react'
 
 import HomeTabContext from '@/context/hometabContext'
+import StateContext from '@/context/stateContext'
 import { setStorage, deleteStorage } from '@/services/storage'
 
 import Container from '@/components/Settings/ContainerSetting'
@@ -8,7 +9,9 @@ import Title from '@/components/Settings/TitleSetting'
 import Input from '@/components/Settings/InputSetting'
 
 const ChooseImage = () => {
-  const { isOwnImg, setIsOwnImg, settings, updateWallpaper } = useContext(HomeTabContext)
+  const { isOwnImg, setIsOwnImg } = useContext(HomeTabContext)
+  const { settings, updateWallpaper } = useContext(StateContext)
+
   const [blobURL, setFile] = useState(null)
   const [value, setValue] = useState('')
   const [deleteBg, setDeleteBg] = useState(false)
