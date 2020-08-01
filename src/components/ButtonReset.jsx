@@ -42,7 +42,7 @@ const ButtonReset = () => {
     setClicked(!clicked)
   }
 
-  const selectClass = !clicked ? 'bg-slate-700 hover:bg-gray-600/80' : 'bg-slate-800 hover:bg-gray-700/80'
+  const selectClass = !clicked ? 'bg-slate-700 hover:bg-gray-600/80' : 'bg-red-500/50 hover:bg-red-600'
 
   return (
     <Container center>

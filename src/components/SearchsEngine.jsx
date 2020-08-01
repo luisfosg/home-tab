@@ -7,25 +7,19 @@ import SearchEngine from '@/components/SearchEngine'
 import Container from '@/components/Settings/ContainerSetting'
 import Title from '@/components/Settings/TitleSetting'
 
-import { searchEngine, defaultSearchEngine } from '@/config.json'
+import { defaultSearchEngine } from '@/config.json'
 
 const SearchsEngine = () => {
-  const [searchs, setSearchs] = useState([])
   const storageSearchEngine = getStorage('defaultSearchEngine') || defaultSearchEngine
   const [selected, setSelected] = useState(storageSearchEngine)
 
-  const { settings } = useContext(StateContext)
+  const { searchs, settings } = useContext(StateContext)
 
   useEffect(() => {
     settings.updateSetting({
       name: 'searchEngine',
       progress: true
     })
-
-    const savedSearchEngine = getStorage('searchsEngine')
-    const useSearchEngine = savedSearchEngine || searchEngine
-
-    setSearchs(Object.entries(useSearchEngine))
   }, [])
 
   useEffect(() => {
@@ -43,6 +37,17 @@ const SearchsEngine = () => {
   const handleChange = (e) => {
     const { value } = e.target
     setSelected(value)
+  }
+
+  if (searchs.length === 0) {
+    return (
+      <Container center border='none'>
+        <Title>Motor de Búsqueda</Title>
+        <div className='w-full'>
+          <p className='mt-5 text-center text-gray-400/80'>No hay motores de búsqueda, agrega uno.</p>
+        </div>
+      </Container>
+    )
   }
 
   return (

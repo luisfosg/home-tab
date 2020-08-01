@@ -1,5 +1,6 @@
-import { useState } from 'react'
+import { useState, useEffect, useContext } from 'react'
 
+import StateContext from '@/context/stateContext'
 import { setStorageSearch } from '@/services/storage'
 
 import Container from '@/components/Settings/ContainerSetting'
@@ -8,6 +9,30 @@ import Input from '@/components/Settings/InputSetting'
 
 const NewSearchEngine = () => {
   const [name, setName] = useState('')
+  const [searchs, setSearchs] = useState([])
+  const { settings, addSearch } = useContext(StateContext)
+
+  useEffect(() => {
+    settings.updateSetting({
+      name: 'newSearchEngine',
+      progress: true
+    })
+  }, [])
+
+  useEffect(() => {
+    if (settings.updateSettings) handleSave()
+  }, [settings.updateSettings])
+
+  const handleSave = () => {
+    searchs.forEach(search => {
+      setStorageSearch(`searchsEngine.${search[0]}`, search[1])
+    })
+
+    settings.updateSetting({
+      name: 'newSearchEngine',
+      success: true
+    })
+  }
 
   const handleChange = (e) => {
     setName(e.target.value)
@@ -17,11 +42,11 @@ const NewSearchEngine = () => {
     e.preventDefault()
     if (name === '') return
 
-    setStorageSearch(
-      `searchsEngine.${name.trim()}`,
-      'Agrega {query} a tu nuevo motor de búsqueda :)'
-    )
-
+    addSearch([name.trim(), 'Agrega {query} a tu nuevo motor de búsqueda :)'])
+    setSearchs([
+      ...searchs,
+      [name.trim(), 'Agrega {query} a tu nuevo motor de búsqueda :)']
+    ])
     setName('')
   }
 

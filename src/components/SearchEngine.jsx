@@ -1,16 +1,15 @@
 import { useState, useEffect, useContext } from 'react'
 
 import StateContext from '@/context/stateContext'
-import { setStorageSearch, deleteStorageSearch } from '@/services/storage'
+import { setStorageSearch } from '@/services/storage'
 import { capitalize } from '@/services/util'
 
 import Input from '@/components/Settings/InputSetting'
 import Close from '@/components/Icons/Close'
 
 const SearchEngine = ({ name, url, select, handleChange }) => {
-  const { settings } = useContext(StateContext)
+  const { settings, removeSearch } = useContext(StateContext)
   const [urlInput, setUrl] = useState(url)
-  const [isDelete, setIsDelete] = useState(false)
 
   const isChecked = name === select
 
@@ -27,18 +26,21 @@ const SearchEngine = ({ name, url, select, handleChange }) => {
 
   const handleSave = () => {
     if (url !== urlInput) setStorageSearch(`searchsEngine.${name}`, urlInput)
-    if (isDelete) deleteStorageSearch(`searchsEngine.${name}`)
-
     settings.updateSetting({
       name: `input-${name}`,
       success: true
     })
   }
 
-  const handleDelete = () => { setIsDelete(true) }
-  const handleChangeInput = (e) => { setUrl(e.target.value) }
+  const handleDelete = () => {
+    settings.updateSetting({
+      name: `input-${name}`,
+      success: true
+    })
+    removeSearch(name)
+  }
 
-  if (isDelete) return null
+  const handleChangeInput = (e) => { setUrl(e.target.value) }
 
   return (
     <div className='mt-5 grid grid-cols-3 gap-2 bg-slate-900/50 p-2 rounded-md'>

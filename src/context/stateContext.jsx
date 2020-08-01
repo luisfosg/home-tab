@@ -1,12 +1,17 @@
 import { createContext, useState, useEffect, useContext } from 'react'
 
 import HomeTabContext from '@/context/hometabContext'
-import { getStorage } from '@/services/storage'
+import { getStorage, deleteStorageSearch } from '@/services/storage'
 
 import useBackground from '@/hooks/useBackground'
 import useSettings from '@/hooks/useSettings'
+import useSearchs from '@/hooks/useSearchs'
 
 const Context = createContext({
+  searchs: [],
+  addSearch: () => {},
+  removeSearch: () => {},
+
   settings: {},
   openSettings: false,
   setOpenSettings: () => {},
@@ -16,7 +21,9 @@ const Context = createContext({
 
 export const StateContextProvider = ({ children }) => {
   const { setIsOwnImg } = useContext(HomeTabContext)
+
   const settings = useSettings()
+  const { searchs, deleteSearchs, addSearch, removeSearch, updateSearchs } = useSearchs()
   const { updateWallpaper } = useBackground()
   const [openSettings, setOpenSettings] = useState(false)
 
@@ -34,14 +41,26 @@ export const StateContextProvider = ({ children }) => {
     if (!openSettings) {
       settings.clearSettings()
       setIsOwnImg(!!getStorage('ownBg'))
+      updateSearchs()
     }
   }, [openSettings])
 
   useEffect(() => {
+    if (settings.updateSettings) {
+      deleteSearchs.forEach(search => deleteStorageSearch(`searchsEngine.${search}`))
+    }
+  }, [settings.updateSettings])
+
+  useEffect(() => {
     updateWallpaper()
+    updateSearchs()
   }, [])
 
   const VALUES = {
+    searchs,
+    addSearch,
+    removeSearch,
+
     settings,
     openSettings,
     setOpenSettings,
