@@ -22,6 +22,7 @@ export const HomeTabContextProvider = ({ children }) => {
   const [isOwnImg, setIsOwnImg] = useState(() => {
     return !!getStorage('ownBg')
   })
+
   const [isPinned, setIsPinned] = useState(() => {
     return getStorage('pin') || pin
   })
