@@ -8,7 +8,7 @@ import Input from '@/components/Settings/InputSetting'
 import Close from '@/components/Icons/Close'
 
 const SearchEngine = ({ name, url, select, handleChange }) => {
-  const { settings, removeSearch } = useContext(StateContext)
+  const { settings, configSearch } = useContext(StateContext)
   const [urlInput, setUrl] = useState(url)
 
   const isChecked = name === select
@@ -37,7 +37,7 @@ const SearchEngine = ({ name, url, select, handleChange }) => {
       name: `input-${name}`,
       success: true
     })
-    removeSearch(name)
+    configSearch.removeSearch(name)
   }
 
   const handleChangeInput = (e) => { setUrl(e.target.value) }

@@ -10,7 +10,7 @@ import Input from '@/components/Settings/InputSetting'
 const NewSearchEngine = () => {
   const [name, setName] = useState('')
   const [searchs, setSearchs] = useState([])
-  const { settings, addSearch } = useContext(StateContext)
+  const { settings, configSearch } = useContext(StateContext)
 
   useEffect(() => {
     settings.updateSetting({
@@ -42,7 +42,7 @@ const NewSearchEngine = () => {
     e.preventDefault()
     if (name === '') return
 
-    addSearch([name.trim(), 'Agrega {query} a tu nuevo motor de búsqueda :)'])
+    configSearch.addSearch([name.trim(), 'Agrega {query} a tu nuevo motor de búsqueda :)'])
     setSearchs([
       ...searchs,
       [name.trim(), 'Agrega {query} a tu nuevo motor de búsqueda :)']

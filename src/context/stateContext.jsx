@@ -9,8 +9,7 @@ import useSearchs from '@/hooks/useSearchs'
 
 const Context = createContext({
   searchs: [],
-  addSearch: () => {},
-  removeSearch: () => {},
+  configSearch: {},
 
   settings: {},
   openSettings: false,
@@ -23,7 +22,7 @@ export const StateContextProvider = ({ children }) => {
   const { setIsOwnImg } = useContext(HomeTabContext)
 
   const settings = useSettings()
-  const { searchs, deleteSearchs, addSearch, removeSearch, updateSearchs } = useSearchs()
+  const { searchs, config, updateSearchs } = useSearchs()
   const { updateWallpaper } = useBackground()
   const [openSettings, setOpenSettings] = useState(false)
 
@@ -47,7 +46,7 @@ export const StateContextProvider = ({ children }) => {
 
   useEffect(() => {
     if (settings.updateSettings) {
-      deleteSearchs.forEach(search => deleteStorageSearch(`searchsEngine.${search}`))
+      config.deleteSearchs.forEach(search => deleteStorageSearch(`searchsEngine.${search}`))
     }
   }, [settings.updateSettings])
 
@@ -58,8 +57,7 @@ export const StateContextProvider = ({ children }) => {
 
   const VALUES = {
     searchs,
-    addSearch,
-    removeSearch,
+    configSearch: config,
 
     settings,
     openSettings,

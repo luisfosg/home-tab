@@ -25,10 +25,12 @@ const useSearchs = () => {
 
   return {
     searchs,
-    deleteSearchs,
 
-    addSearch,
-    removeSearch,
+    config: {
+      deleteSearchs,
+      addSearch,
+      removeSearch
+    },
     updateSearchs
   }
 }
