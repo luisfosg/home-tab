@@ -14,14 +14,16 @@ const resolve = {
   }
 }
 
+const plugins = [
+  react(),
+  crx({
+    manifest
+  })
+]
+
 export default defineConfig({
   publicDir: 'assets',
-  plugins: [
-    react(),
-    crx({
-      manifest
-    })
-  ],
+  plugins,
   css: {
     postcss: './postcss.config.js'
   },
