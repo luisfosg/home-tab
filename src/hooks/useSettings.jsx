@@ -24,8 +24,13 @@ const useSettings = () => {
     })
   }
 
+  const handleSaveSetting = (callback, important = 0) => {
+    callback()
+  }
+
   return {
     settings,
+    handleSaveSetting,
 
     updateSettings,
     setUpdateSettings,

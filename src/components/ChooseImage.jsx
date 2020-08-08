@@ -24,7 +24,7 @@ const ChooseImage = () => {
   }, [])
 
   useEffect(() => {
-    if (settings.updateSettings) handleSave()
+    if (settings.updateSettings) settings.handleSaveSetting(handleSave)
   }, [settings.updateSettings])
 
   const handleChange = (e) => {

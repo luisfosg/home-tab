@@ -23,7 +23,7 @@ const SearchsEngine = () => {
   }, [])
 
   useEffect(() => {
-    if (settings.updateSettings) handleSave()
+    if (settings.updateSettings) settings.handleSaveSetting(handleSave)
   }, [settings.updateSettings])
 
   const handleSave = () => {
