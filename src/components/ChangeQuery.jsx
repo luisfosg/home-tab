@@ -26,7 +26,7 @@ const ChangeQuery = () => {
   }, [])
 
   useEffect(() => {
-    if (settings.updateSettings) settings.handleSaveSetting(handleSave)
+    if (settings.updateSettings) settings.handleSaveSetting(handleSave, 1)
   }, [settings.updateSettings])
 
   const handleChange = (e) => {

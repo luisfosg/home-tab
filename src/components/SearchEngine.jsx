@@ -21,7 +21,7 @@ const SearchEngine = ({ name, url, select, handleChange }) => {
   }, [])
 
   useEffect(() => {
-    if (settings.updateSettings) settings.handleSaveSetting(handleSave)
+    if (settings.updateSettings) settings.handleSaveSetting(handleSave, 2)
   }, [settings.updateSettings])
 
   const handleSave = () => {

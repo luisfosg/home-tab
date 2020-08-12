@@ -32,7 +32,6 @@ export const setStorageSearch = (nameSelect, value) => {
   const data = getStorage(name) || searchEngine
   data[select] = value
 
-  console.log(`Set storage ${name} ${select} to ${value}`)
   setStorage(name, data)
 }
 

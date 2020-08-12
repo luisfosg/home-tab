@@ -24,7 +24,7 @@ const ChooseImage = () => {
   }, [])
 
   useEffect(() => {
-    if (settings.updateSettings) settings.handleSaveSetting(handleSave)
+    if (settings.updateSettings) settings.handleSaveSetting(handleSave, 2)
   }, [settings.updateSettings])
 
   const handleChange = (e) => {
@@ -42,20 +42,24 @@ const ChooseImage = () => {
       })
     }
 
-    const reader = new window.FileReader()
+    return await new Promise((resolve, reject) => {
+      const reader = new window.FileReader()
 
-    reader.onload = (function (_theFile) {
-      return function (e) {
-        setStorage('ownBg', e.target.result)
-        settings.updateSetting({
-          name: 'image',
-          success: true
-        })
-        updateWallpaper()
-      }
-    })(blobURL)
+      reader.onload = (function (_theFile) {
+        return function (e) {
+          setStorage('ownBg', e.target.result)
+          settings.updateSetting({
+            name: 'image',
+            success: true
+          })
+          updateWallpaper()
+          resolve()
+        }
+      })(blobURL)
 
-    reader.readAsDataURL(blobURL)
+      reader.onerror = function (e) { reject(e) }
+      reader.readAsDataURL(blobURL)
+    })
   }
 
   const handleDelete = () => {

@@ -46,7 +46,9 @@ export const StateContextProvider = ({ children }) => {
 
   useEffect(() => {
     if (settings.updateSettings) {
-      config.deleteSearchs.forEach(search => deleteStorageSearch(`searchsEngine.${search}`))
+      settings.handleSaveSetting(() => {
+        config.deleteSearchs.forEach(search => deleteStorageSearch(`searchsEngine.${search}`))
+      }, 3)
     }
   }, [settings.updateSettings])
 
