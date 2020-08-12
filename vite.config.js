@@ -1,6 +1,7 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import { crx } from '@crxjs/vite-plugin'
+import { createHtmlPlugin } from 'vite-plugin-html'
 
 import { resolve as resolvePath } from 'path'
 
@@ -15,17 +16,29 @@ const resolve = {
 }
 
 const plugins = [
-  react(),
-  crx({
-    manifest
-  })
+  react()
 ]
 
-export default defineConfig({
-  publicDir: 'assets',
-  plugins,
-  css: {
-    postcss: './postcss.config.js'
-  },
-  resolve
+export default defineConfig(({ command, mode, ssrBuild }) => {
+  console.log(command, mode, ssrBuild)
+
+  if (mode === 'production') {
+    plugins.push(
+      crx({
+        manifest
+      }),
+      createHtmlPlugin({
+        minify: true
+      })
+    )
+  }
+
+  return {
+    publicDir: 'assets',
+    plugins,
+    css: {
+      postcss: './postcss.config.js'
+    },
+    resolve
+  }
 })
