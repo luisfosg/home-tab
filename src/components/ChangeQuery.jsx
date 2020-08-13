@@ -26,7 +26,12 @@ const ChangeQuery = () => {
   }, [])
 
   useEffect(() => {
-    if (settings.updateSettings) settings.handleSaveSetting(handleSave, 1)
+    if (settings.updateSettings) {
+      settings.handleSaveSetting(handleSave, {
+        name: 'query',
+        priority: 1
+      })
+    }
   }, [settings.updateSettings])
 
   const handleChange = (e) => {

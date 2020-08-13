@@ -23,7 +23,12 @@ const SearchsEngine = () => {
   }, [])
 
   useEffect(() => {
-    if (settings.updateSettings) settings.handleSaveSetting(handleSave, 3)
+    if (settings.updateSettings) {
+      settings.handleSaveSetting(handleSave, {
+        name: 'searchEngine',
+        priority: 3
+      })
+    }
   }, [settings.updateSettings])
 
   const handleSave = () => {

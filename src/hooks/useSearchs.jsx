@@ -9,7 +9,7 @@ const useSearchs = () => {
 
   const updateSearchs = () => {
     const savedSearchEngine = getStorage('searchsEngine') || searchEngine
-    setSearchs(Object.entries(savedSearchEngine))
+    setSearchs(() => Object.entries(savedSearchEngine))
   }
 
   const addSearch = (search) => {

@@ -24,7 +24,12 @@ const ChooseImage = () => {
   }, [])
 
   useEffect(() => {
-    if (settings.updateSettings) settings.handleSaveSetting(handleSave, 2)
+    if (settings.updateSettings) {
+      settings.handleSaveSetting(handleSave, {
+        name: 'image',
+        priority: 2
+      })
+    }
   }, [settings.updateSettings])
 
   const handleChange = (e) => {
@@ -53,7 +58,9 @@ const ChooseImage = () => {
             success: true
           })
           updateWallpaper()
-          resolve()
+          setFile(null)
+
+          resolve(e.target.result)
         }
       })(blobURL)
 

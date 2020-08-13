@@ -19,7 +19,12 @@ const ButtonReset = () => {
   }, [])
 
   useEffect(() => {
-    if (settings.updateSettings) settings.handleSaveSetting(handleSave)
+    if (settings.updateSettings) {
+      settings.handleSaveSetting(handleSave, {
+        name: 'reset',
+        priority: 0
+      })
+    }
   }, [settings.updateSettings])
 
   const handleSave = async () => {

@@ -13,12 +13,14 @@ const useSettings = () => {
   }, [settings])
 
   useEffect(() => {
-    if (Object.keys(settings).length <= callbackSettings.length) {
-      callbackSettings.sort((a, b) => b.priority - a.priority)
-      callbackSettings.forEach(async callback => {
-        await callback.run()
-      })
-    }
+    if (callbackSettings.length === 0) return
+    callbackSettings.sort((a, b) => b.priority - a.priority)
+
+    callbackSettings.forEach(async callback => {
+      await callback.run()
+    })
+
+    setCallbackSettings([])
   }, [callbackSettings])
 
   const clearSettings = () => {
@@ -34,9 +36,13 @@ const useSettings = () => {
     })
   }
 
-  const handleSaveSetting = (callback, priority = 0) => {
+  const handleSaveSetting = (callback, {
+    name,
+    priority = 0
+  }) => {
     setCallbackSettings((last) => {
       return [...last, {
+        name,
         priority,
         run: callback
       }]

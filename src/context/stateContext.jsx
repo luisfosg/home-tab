@@ -48,7 +48,10 @@ export const StateContextProvider = ({ children }) => {
     if (settings.updateSettings) {
       settings.handleSaveSetting(() => {
         config.deleteSearchs.forEach(search => deleteStorageSearch(`searchsEngine.${search}`))
-      }, 3)
+      }, {
+        name: 'deleteSearchs',
+        priority: 3
+      })
     }
   }, [settings.updateSettings])
 

@@ -7,6 +7,8 @@ import Container from '@/components/Settings/ContainerSetting'
 import Title from '@/components/Settings/TitleSetting'
 import Input from '@/components/Settings/InputSetting'
 
+import { defaultUrlSearch } from '@/config.json'
+
 const NewSearchEngine = () => {
   const [name, setName] = useState('')
   const [searchs, setSearchs] = useState([])
@@ -20,7 +22,12 @@ const NewSearchEngine = () => {
   }, [])
 
   useEffect(() => {
-    if (settings.updateSettings) settings.handleSaveSetting(handleSave, 5)
+    if (settings.updateSettings) {
+      settings.handleSaveSetting(handleSave, {
+        name: 'newSearchEngine',
+        priority: 5
+      })
+    }
   }, [settings.updateSettings])
 
   const handleSave = () => {
@@ -42,10 +49,10 @@ const NewSearchEngine = () => {
     e.preventDefault()
     if (name === '') return
 
-    configSearch.addSearch([name.trim(), 'Agrega {query} a tu nuevo motor de búsqueda :)'])
+    configSearch.addSearch([name.trim(), defaultUrlSearch])
     setSearchs([
       ...searchs,
-      [name.trim(), 'Agrega {query} a tu nuevo motor de búsqueda :)']
+      [name.trim(), defaultUrlSearch]
     ])
     setName('')
   }
